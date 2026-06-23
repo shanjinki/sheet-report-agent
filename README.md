@@ -1,149 +1,246 @@
 # excel-to-html-slides
 
-> **一句话：把 Excel/CSV 丢进来，出来一份可以直接拿去汇报的 HTML 幻灯片。**
+> Drop an Excel or CSV file in. Get a presentation-ready HTML business briefing out.
 >
-> **One sentence: Drop a spreadsheet in, get a presentation-ready HTML slide deck out.**
+> 把企业里导出的 Excel/CSV 表格，变成可以直接拿去汇报的单文件 HTML 汇报材料。
+
+[Demand demo](examples/sample_demand_report.html) · [Finance demo](examples/sample_finance_report.html) · [CRM demo](examples/sample_crm_report.html) · [Inventory demo](examples/sample_inventory_report.html) · [Support demo](examples/sample_support_report.html) · [HR demo](examples/sample_hr_report.html) · [Feedback demo](examples/sample_feedback_report.html)
 
 ---
 
-## 这到底解决了什么问题？
+## 中文快速理解
 
-企业在做数据汇报时永远卡在这里：
+这个项目解决的是企业里很常见的一件事：专员从系统里导出 Excel 后，不能直接拿给管理层或跨部门对齐，还要花很多时间做图表、写结论、调样式。
 
+`excel-to-html-slides` 让 Agent 装上一个稳定的“表格汇报能力包”：用户给原始表格和分析要求，Agent 先用脚本生成一份有业务口径、有视觉系统、有风险建议的 HTML 汇报材料，再按需要精修。
+
+它的差异化不是“提示词写得好”，而是把重复工作沉淀成了可复用资产：领域识别、确定性指标计算、常见业务蓝图、视觉规范、质量检查和示例验证。
+
+---
+
+## The Pain
+
+Enterprise teams already have the data. It is sitting in exports from CRM, ERP, ecommerce platforms, DevOps systems, ticket systems, HR tools, surveys, or offline collection sheets.
+
+The real bottleneck is what happens next:
+
+```text
+Export Excel
+Clean field names
+Figure out what matters
+Build charts
+Rewrite insights
+Make it look presentable
+Move it into a meeting deck
+Repeat after every manager comment
 ```
-老板说："把上个月的订单/销售/库存数据整理一下，下午开会用。"
-你：  导出 Excel → 调格式 → 做图表 → 贴 PPT → 调颜色 → 导出 PDF
-结果：两小时过去了，格式还不对。
-```
 
-**excel-to-html-slides 把这个流程变成 30 秒。**
+That is why specialists often spend half a day turning a raw table into something management can read.
+
+`excel-to-html-slides` is an AI-agent skill and deterministic Python toolkit that turns that workflow into a few minutes: profile the table, infer the business domain, calculate the core metrics, choose a visual system, and generate a polished standalone HTML report.
 
 ---
 
-## 为什么不直接让 AI Agent 生成？
+## Why Not Just Ask An Agent?
 
-好问题。答案是：**你可以，但 excel-to-html-slides 解决了 Agent 做不好的几件事。**
+You can. For one-off analysis, a strong agent can write HTML from scratch.
 
-### 壁垒 1：反 AI 同质化设计 🎨
+This project exists because direct agent output is unreliable in exactly the places enterprise reports care about.
 
-直接让 Agent 生成 HTML 报告，100 次里有 95 次是同一个样子：
+| Direct agent generation | `excel-to-html-slides` |
+|---|---|
+| Every report tends to become the same generic AI dashboard | Six runnable visual systems plus an 18-template direction pack |
+| Business metrics can drift between conversations | Deterministic Python analyzers calculate repeatable KPIs |
+| The agent spends tokens rediscovering common CRM/ERP/ecommerce logic | Built-in blueprints encode common exported-table patterns |
+| Style tuning takes many back-and-forth prompts | First output is designed to clear a practical presentation bar |
+| Batch or weekly reporting is expensive and inconsistent | Runs locally, offline, and produces self-contained HTML |
 
-> 紫色渐变 + 白色卡片 + 圆角 + 无衬线字体 = **所有 AI 生成的报告看起来都一样**
-
-excel-to-html-slides 内置 **18 种经过策划的独特视觉风格**，覆盖：
-
-| 风格 | 适合场景 |
-|------|----------|
-| `retail-pulse` | 电商运营、销售日报 |
-| `boardroom-light` | 董事会、高管汇报 |
-| `command-center` | 风险管控、运维复盘 |
-| `ops-ledger` | 采购、库存、财务流水 |
-| `ink-wash` | 水墨留白，中国风高管汇报 |
-| `terminal-green` | 终端绿屏，极客/运维感 |
-| `neon-noir` | 霓虹夜市，消费/电商品牌 |
-| `swiss-grid` | 瑞士国际主义，咨询/战略 |
-| `corporate-navy` | 财富 500 董事会风格 |
-| `data-ink` | Tufte 高密度，数据分析师专属 |
-| *（共 18 种，详见 style-presets.md）* | |
-
-每种风格都有独立的配色系统、字体层级、图表语言和排版节奏——**不是换色那么简单**。
-
-### 壁垒 2：企业级口径确定性 📐
-
-Agent 每次对"毛利率"的理解可能不一样。excel-to-html-slides 的 Python 脚本把企业常用口径**写死在代码里**：
-
-- 退货率 = 退款订单数 / 总订单数（不含取消）
-- 完成率 = 已完成 / (总订单 - 已取消)
-- 预算差异率 = (实际 - 预算) / 预算 × 100%
-
-同一份 Excel，跑 1000 遍，出来的数字一模一样。**这是审计级需求，不是效率需求。**
-
-### 壁垒 3：零 Token 批量自动化 🔄
-
-| 场景 | Agent 直接做 | excel-to-html-slides |
-|------|--------------|---------------------|
-| 偶尔分析一份数据 | ✅ 更灵活 | ⚠️ 够用 |
-| 每周一自动出 50 个分公司报告 | ❌ 成本和一致性扛不住 | ✅ 一行脚本 cron 跑 |
-| 固定口径周期性报告 | ❌ 每次口径可能漂 | ✅ 确定性输出 |
-| 离线环境/内网 | ❌ 需要 API | ✅ 纯本地 Python |
-
-### 壁垒 4：渐进式工作流，省 70% 上下文 🧠
-
-excel-to-html-slides 的 `SKILL.md` 采用**渐进式披露**架构——Agent 只在需要时才加载对应参考文件，避免把 10 个参考文档一次性塞进上下文窗口。
+The skill is not trying to replace the agent. It gives the agent a better starting point: fixed business logic, reusable report structure, and visual rails that prevent the usual ugly first draft.
 
 ---
 
-## 支持哪些业务场景？
+## Differentiation In One Minute
 
-| 数据域 | 谁用 | 输出什么 |
-|--------|------|----------|
-| `ecommerce-orders` | 电商/运营专员 | GMV 趋势、品类贡献、渠道分析、退货预警 |
-| `finance-expense` | 财务专员 | 营收利润、预算差异、主体排行、风险暴露 |
-| `crm-pipeline` | 销售专员 | 管线漏斗、销售业绩、来源质量、僵尸商机 |
-| `erp-inventory` | 仓储/采购专员 | SKU 分析、缺货预警、出入库趋势 |
-| `hr-attendance` | 人事专员 | 部门对比、考勤分布、绩效分析 |
-| `support-tickets` | 客服专员 | 工单量、解决率、SLA、满意度 |
-| `survey-feedback` | 市场专员 | 评分分布、群体对比、NPS、选择题统计 |
-| `devops-demand-pool` | 研发 PM | 需求漏斗、分类健康度、负责人负载 |
-| `generic-table` | 数据专员 | 交叉分析、异常检测、趋势、结构贡献 |
+This is not just a prompt library. The repository ships four reusable assets that reduce multi-turn report tuning:
+
+1. **Deterministic analyzers**: Python code calculates domain KPIs and risk signals for common enterprise exports, so numbers do not drift between conversations.
+2. **Domain blueprints**: CRM, ERP, finance, ecommerce, support, HR, survey, DevOps, and generic-table report modules are pre-defined instead of rediscovered from scratch.
+3. **Visual rails**: six runnable design systems and 18 template directions keep the first report away from the generic AI dashboard look.
+4. **Quality contract**: the skill tells the agent to check row counts, missing fields, assumptions, risk/action cards, and visual completeness before delivery.
+
+For users, that means fewer prompts like "make it prettier", "add risk analysis", "why is this just a data profile", or "where is the trend chart".
 
 ---
 
-## 快速开始
+## What It Generates
 
-### 安装
+The output is a single `.html` file with inline CSS and JavaScript. No build step, no hosted service, no external chart library.
+
+Each report is designed around:
+
+- executive KPIs
+- business-domain analysis sections
+- trend, funnel, structure, or exception views where the data supports them
+- grounded insights
+- risk and action cards
+- visible assumptions and missing-field notes
+- responsive layout for desktop review and quick mobile reading
+
+This is closer to a management briefing page than a raw dashboard export. It can be opened directly in a browser, shared as a file, or embedded into a broader reporting workflow.
+
+---
+
+## Supported Business Domains
+
+| Domain | Typical export | Built-in analysis |
+|---|---|---|
+| `ecommerce-orders` | Orders, refunds, product sales | GMV, category/channel contribution, refund risk, trends |
+| `finance-expense` | Revenue, expense, budget, reconciliation | revenue/profit, budget variance, entity comparison, loss/debt risk |
+| `crm-pipeline` | Leads, opportunities, follow-up records | pipeline amount, stage funnel, owner ranking, stale deals |
+| `erp-inventory` | Inventory, procurement, warehouse records | stockout, overstock, supplier concentration, movement trend |
+| `support-tickets` | Tickets, complaints, service cases | volume, resolution rate, SLA risk, agent workload |
+| `hr-attendance` | Attendance, performance, staff operations | department comparison, abnormal attendance, score distribution |
+| `survey-feedback` | Surveys, ratings, comments, offline forms | rating distribution, segment comparison, representative feedback |
+| `devops-demand-pool` | Requirement pools, project/task exports | lifecycle funnel, backlog health, owner load, delivery risk |
+| `generic-table` | Unknown or mixed business tables | trend, structure, numeric summary, outliers, missingness |
+
+---
+
+## Visual System
+
+The runtime generator currently supports six production-ready styles:
+
+| Style | Best for | Feel |
+|---|---|---|
+| `command-center` | risk, project governance, DevOps, operations | dark, dense, control-room |
+| `boardroom-light` | finance, CRM, management reviews | calm, executive, print-friendly |
+| `retail-pulse` | ecommerce, product, customer reports | energetic, commercial, trend-forward |
+| `ops-ledger` | ERP, procurement, inventory | precise, operational, exception-led |
+| `editorial-brief` | surveys, research, qualitative feedback | readable, human, insight-led |
+| `data-studio` | generic or exploratory tables | analytical, neutral, transparent |
+
+The `report-template-pack/` adds 18 template directions for agents to choose from when a report needs stronger narrative or visual framing. These are template briefs and selection metadata, not 18 separate runtime CLI styles yet.
+
+---
+
+## Quick Start
+
+Install dependencies:
 
 ```bash
+pip install -r requirements.txt
+```
+
+Verify the local repo:
+
+```bash
+python3 scripts/smoke_check.py
+```
+
+Generate a report directly:
+
+```bash
+python3 scripts/generate_report.py your_data.xlsx \
+  --requirement "分析这份表格，生成管理层汇报材料，突出关键指标、风险和行动建议" \
+  --style boardroom-light \
+  --output report.html
+```
+
+Profile a table first:
+
+```bash
+python3 scripts/profile_table.py your_data.xlsx --output profile.json
+```
+
+Open `report.html` in any browser.
+
+---
+
+## Install As An Agent Skill
+
+Clone the repository, install Python dependencies, then install the skill into the agent runtime:
+
+```bash
+pip install -r requirements.txt
+
 # WorkBuddy
-/plugin marketplace install excel-to-html-slides
+./install.sh workbuddy
 
-# 或手动安装
-git clone https://github.com/shanjinki/excel-to-html-slides.git ~/.workbuddy/skills/excel-to-html-slides/
+# Codex
+./install.sh codex
+
+# Claude Code
+./install.sh claude
+
+# All supported local agents
+./install.sh all
 ```
 
-### 使用
+Then ask your agent:
 
-**方式一：脚本直出（最快）**
+```text
+Use $excel-to-html-slides to analyze /path/to/data.xlsx and generate a management-ready HTML report.
+```
+
+The skill is intentionally agent-agnostic. It works best when the host agent can read local files and run Python scripts.
+
+If an agent only supports repository skills, point it at this repo and tell it to start from `SKILL.md`. If an agent only supports shell tools, run `scripts/generate_report.py` directly and let the agent refine the generated HTML if needed.
+
+---
+
+## Examples
+
+All examples use synthetic data.
+
+- [DevOps demand pool report](examples/sample_demand_report.html)
+- [Finance performance report](examples/sample_finance_report.html)
+- [CRM pipeline report](examples/sample_crm_report.html)
+- [Inventory and procurement report](examples/sample_inventory_report.html)
+- [Support ticket report](examples/sample_support_report.html)
+- [HR operations report](examples/sample_hr_report.html)
+- [Survey and feedback report](examples/sample_feedback_report.html)
+
+You can regenerate all sample reports with:
 
 ```bash
-python3 scripts/generate_report.py 订单数据.xlsx \
-  --requirement "分析电商订单，突出GMV趋势和退货风险" \
-  --style retail-pulse \
-  --output 报告.html
+python3 scripts/smoke_check.py
 ```
 
-**方式二：让 AI Agent 帮你**
+---
 
-> "用 excel-to-html-slides skill，分析 `/path/to/数据.xlsx`，生成管理层汇报 HTML，风格选 retail-pulse。"
+## Project Structure
 
-Agent 会自动：profile → 识别业务域 → 选风格 → 生成报告 → 质量检查。
+```text
+├── SKILL.md                       # cross-agent workflow instructions
+├── agents/openai.yaml             # skill display metadata
+├── install.sh                     # local installer for WorkBuddy, Codex, Claude
+├── scripts/
+│   ├── profile_table.py           # table profiler and domain inference
+│   ├── generate_report.py         # deterministic HTML report generator
+│   └── smoke_check.py             # no-pytest verification for all examples
+├── references/
+│   ├── report-blueprints.md       # analysis modules by business domain
+│   ├── style-presets.md           # visual system guidance
+│   ├── quality-bar.md             # delivery checklist
+│   └── html-report-template.md    # HTML architecture contract
+├── report-template-pack/
+│   ├── selection-index.json       # 18 template directions
+│   └── templates/                 # lightweight preview cards
+├── examples/                      # synthetic source data and generated reports
+└── tests/                         # smoke tests for key report domains
+```
 
 ---
 
-## 技术特性
+## Current Boundaries
 
-- ✅ **零依赖输出**：生成的 HTML 是自包含单文件，内联 CSS/JS，无需构建
-- ✅ **离线可用**：纯本地 Python，不需要任何 API 调用
-- ✅ **跨 Agent 兼容**：支持 WorkBuddy、Claude Code、Codex、Gemini CLI
-- ✅ **响应式**：桌面和移动端均可浏览
-- ✅ **质量检查内置**：输出前自动检查空值、口径、图表、行动建议
-
----
-
-## 示例
-
-`examples/` 目录包含真实场景的示例报告（使用合成数据）：
-- `sample_demand_report.html` — DevOps 需求池分析报告
-- `sample_finance_report.html` — 财务多主体对比报告
-- `sample_ecommerce_report.html` — 电商订单分析报告
+- The generator handles one primary sheet/table at a time. Multi-sheet workbooks are profiled, but cross-sheet relationship modeling is not yet a full semantic engine.
+- The six CLI styles are fully runnable. The 18 template directions guide agents and future expansion.
+- The output is HTML briefing material, not an editable PowerPoint file.
+- The project avoids uploading data. Reports are generated locally from local files.
 
 ---
 
-## 开源协议
+## License
 
-MIT License — 免费使用，也欢迎提 PR 补充更多业务域分析器。
-
----
-
-**excel-to-html-slides** — *Spreadsheets in, presentation-ready HTML out.*
-
+MIT
