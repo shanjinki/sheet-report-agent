@@ -1,0 +1,18 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "excel-to-html-slides",
+  "description": "Turn spreadsheets into polished single-file HTML business briefings.",
+  "owner": {
+    "name": "shanjinki",
+    "url": "https://github.com/shanjinki"
+  },
+  "plugins": [
+    {
+      "name": "excel-to-html-slides",
+      "description": "Spreadsheet-to-HTML briefing generator with business analyzers, visual systems, and cross-agent skill instructions.",
+      "source": "./plugins/excel-to-html-slides",
+      "category": "productivity",
+      "tags": ["spreadsheets", "excel", "html", "reports", "business-analysis"]
+    }
+  ]
+}

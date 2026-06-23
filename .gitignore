@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.DS_Store
+.venv/
+venv/
+outputs/
+*.xlsx
+*.xls
+*.xlsm
+*.tsv
+*.csv
+!examples/*.csv
+*.report.html
+!examples/*.html

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Excel to HTML Slides"
+  short_description: "Turn spreadsheets into HTML briefings"
+  default_prompt: "Use $excel-to-html-slides to turn this Excel export into a polished HTML business briefing."

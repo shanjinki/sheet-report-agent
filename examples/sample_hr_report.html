@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HR 人员运营分析报告</title>
+  <style>
+
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:"PingFang SC","Microsoft YaHei",Arial,sans-serif}body{overflow-x:hidden}.page-shell{position:relative;z-index:1;width:min(1180px,calc(100% - 32px));margin:0 auto;padding:44px 0 64px}#bgCanvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}.theme-command{background:#08111f;color:#e5eefc}.theme-light{background:#f4f7fb;color:#142033}.theme-retail{background:#fff7ed;color:#1f2937}.theme-ledger{background:#101815;color:#e7f5ee}.theme-editorial{background:#fbf4e9;color:#241b15}.theme-studio{background:#101020;color:#eeeaff}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:24px;align-items:end;padding:32px 0 28px}.eyebrow{letter-spacing:.18em;text-transform:uppercase;font-size:12px;color:var(--muted);margin:0 0 12px}.hero h1{font-size:clamp(34px,5vw,64px);line-height:1.05;margin:0 0 14px;letter-spacing:0}.subtitle{font-size:18px;line-height:1.7;color:var(--muted);margin:0;max-width:760px}.meta-panel{border:1px solid var(--border);background:var(--card);border-radius:18px;padding:18px 18px;display:grid;grid-template-columns:84px 1fr;gap:8px 10px;box-shadow:var(--shadow)}.meta-panel span{color:var(--muted);font-size:12px}.meta-panel strong{font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.section{margin:22px 0}.section-title,.card-title{display:flex;align-items:center;gap:10px;margin-bottom:14px}.section-title span,.card-title span{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:26px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:800}.section-title h2,.card-title h2{font-size:20px;margin:0}.two-col{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}.card,.kpi,.cat-card,.risk-card,.metric-card{background:var(--card);border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow);backdrop-filter:blur(14px)}.card{padding:22px}.kpi-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}.kpi{position:relative;overflow:hidden;padding:18px 16px;min-height:132px}.kpi:before{content:"";position:absolute;inset:0 0 auto;height:3px;background:var(--tone,#38bdf8)}.kpi-label{font-size:13px;color:var(--muted);margin-bottom:10px}.kpi-value{font-size:36px;font-weight:850;line-height:1;margin-bottom:10px}.kpi-sub{font-size:12px;line-height:1.5;color:var(--muted)}.insight-list{display:grid;gap:12px}.insight{padding:14px 14px;border-radius:14px;background:var(--panel);border:1px solid var(--border);line-height:1.65}.insight strong{color:var(--accent)}.assumption-list{display:grid;gap:9px}.assumption{padding:10px 12px;border-radius:12px;background:var(--panel);color:var(--muted);font-size:13px}.funnel-layout{display:grid;grid-template-columns:380px minmax(0,1fr);gap:18px}.funnel{display:flex;flex-direction:column;align-items:center;padding:18px}.funnel-row{height:42px;margin-top:-5px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:12px;text-shadow:0 1px 2px rgba(0,0,0,.28);clip-path:polygon(8% 0,92% 0,100% 100%,0 100%);min-width:130px}.funnel-row:first-child{margin-top:0}.bar-list{display:grid;gap:10px}.bar-item{display:grid;grid-template-columns:118px 1fr 76px minmax(120px,.7fr);gap:10px;align-items:center;font-size:13px}.bar-item small{color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.bar-track{height:10px;background:var(--panel);border-radius:999px;overflow:hidden}.bar-fill{height:100%;border-radius:999px;background:var(--accent)}.cat-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.cat-card{padding:18px;position:relative;overflow:hidden}.cat-card:before{content:"";position:absolute;inset:0 0 auto;height:3px;background:var(--health)}.cat-head{display:flex;justify-content:space-between;gap:10px;margin-bottom:14px}.cat-name{font-size:20px;font-weight:850}.badge{font-size:12px;border-radius:999px;padding:5px 9px;background:var(--panel);color:var(--muted);white-space:nowrap}.cat-rate{font-size:34px;font-weight:900;color:var(--health);margin-bottom:8px}.mini-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}.mini{padding:9px;border-radius:12px;background:var(--panel);text-align:center}.mini b{display:block;font-size:18px}.mini span{font-size:11px;color:var(--muted)}.owner-line{margin-top:12px;font-size:12px;color:var(--muted);line-height:1.5}.special-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.special{padding:14px;border-radius:14px;background:var(--panel);border:1px solid var(--border)}.special h3{margin:0 0 8px;font-size:15px}.special-meta{display:flex;flex-wrap:wrap;gap:8px;color:var(--muted);font-size:12px}.sample-list{margin:10px 0 0;padding:0;list-style:none;display:grid;gap:7px}.sample-list li{font-size:12px;color:var(--muted);line-height:1.45}.risk-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.risk-card{padding:18px;border-left:4px solid var(--risk)}.risk-card h3{margin:0 0 8px;font-size:17px}.risk-card p{margin:0 0 10px;color:var(--muted);line-height:1.6}.risk-card .action{padding:10px 12px;border-radius:12px;background:var(--panel);font-size:13px;line-height:1.55}.metric-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.metric-card{padding:18px}.metric-card h3{margin:0 0 12px}.top-values{display:grid;gap:9px}.top-row{display:grid;grid-template-columns:minmax(0,1fr) 60px;gap:10px;align-items:center;font-size:13px}.data-table{width:100%;border-collapse:separate;border-spacing:0 8px}.data-table th{color:var(--muted);font-size:12px;text-align:left;font-weight:700;padding:0 10px 4px}.data-table td{background:var(--panel);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:11px 10px;font-size:13px;line-height:1.45}.data-table td:first-child{border-left:1px solid var(--border);border-radius:12px 0 0 12px}.data-table td:last-child{border-right:1px solid var(--border);border-radius:0 12px 12px 0}.theme-command{--card:rgba(10,19,43,.82);--panel:rgba(15,28,58,.76);--border:rgba(56,189,248,.18);--muted:#93a4bb;--accent:#38bdf8;--accent-soft:rgba(56,189,248,.13);--shadow:0 18px 50px rgba(0,0,0,.28)}.theme-light{--card:rgba(255,255,255,.92);--panel:#eef3f8;--border:#dbe4ef;--muted:#64748b;--accent:#1d4ed8;--accent-soft:#dbeafe;--shadow:0 18px 45px rgba(15,23,42,.08)}.theme-retail{--card:rgba(255,255,255,.9);--panel:#fff1e7;--border:#fed7aa;--muted:#7c5b45;--accent:#f97316;--accent-soft:#ffedd5;--shadow:0 18px 45px rgba(154,52,18,.1)}.theme-ledger{--card:rgba(15,31,27,.88);--panel:rgba(30,54,48,.72);--border:rgba(52,211,153,.18);--muted:#9cb5aa;--accent:#34d399;--accent-soft:rgba(52,211,153,.14);--shadow:0 18px 50px rgba(0,0,0,.24)}.theme-editorial{--card:rgba(255,252,245,.94);--panel:#f4eadb;--border:#e8d8c3;--muted:#7b6653;--accent:#9f6b44;--accent-soft:#ead9c3;--shadow:0 18px 45px rgba(89,58,31,.09)}.theme-studio{--card:rgba(18,18,32,.86);--panel:rgba(38,34,58,.72);--border:rgba(139,92,246,.2);--muted:#a6a0bd;--accent:#8b5cf6;--accent-soft:rgba(139,92,246,.16);--shadow:0 18px 50px rgba(0,0,0,.26)}@media(max-width:980px){.hero,.two-col,.funnel-layout{grid-template-columns:1fr}.kpi-grid,.cat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.risk-grid,.special-grid,.metric-grid{grid-template-columns:1fr}}@media(max-width:640px){.page-shell{width:min(100% - 20px,1180px);padding-top:24px}.kpi-grid,.cat-grid{grid-template-columns:1fr}.hero h1{font-size:36px}.bar-item{grid-template-columns:1fr}.bar-item small{white-space:normal}.meta-panel{grid-template-columns:72px 1fr}.data-table{display:block;overflow-x:auto;white-space:nowrap}}
+
+  </style>
+</head>
+<body class="theme-editorial">
+  <canvas id="bgCanvas" aria-hidden="true"></canvas>
+  <main class="page-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">hr-attendance · Editorial Brief</p>
+        <h1>HR 人员运营分析报告</h1>
+        <p class="subtitle">分析部门绩效、考勤异常、高工时负载和管理建议</p>
+      </div>
+      <div class="meta-panel">
+        <span>生成时间</span><strong>2026-06-19 18:19</strong>
+        <span>数据源</span><strong>sample_hr.csv</strong>
+        <span>工作表</span><strong>默认</strong>
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="section-title"><span>01</span><h2>全局概览</h2></div>
+      <div class="kpi-grid" id="kpiGrid"></div>
+    </section>
+
+    <section class="section two-col">
+      <article class="card">
+        <div class="card-title"><span>02</span><h2>关键洞察</h2></div>
+        <div id="insightList" class="insight-list"></div>
+      </article>
+      <article class="card">
+        <div class="card-title"><span>03</span><h2>口径假设</h2></div>
+        <div id="assumptionList" class="assumption-list"></div>
+      </article>
+    </section>
+
+    <section class="section" id="domainSection"></section>
+
+    <section class="section">
+      <div class="section-title"><span>90</span><h2>风险清单与行动建议</h2></div>
+      <div class="risk-grid" id="riskGrid"></div>
+    </section>
+  </main>
+
+  <script>
+    window.__REPORT__ = {"domain": "hr-attendance", "title": "HR 人员运营分析报告", "subtitle": "分析部门绩效、考勤异常、高工时负载和管理建议", "generated_at": "2026-06-19 18:19", "source": "examples/sample_hr.csv", "sheet": null, "kpis": [{"label": "员工数", "value": "6", "sub": "4 个部门", "tone": "blue"}, {"label": "记录数", "value": "12", "sub": "5 类岗位", "tone": "green"}, {"label": "平均绩效", "value": "77.6", "sub": "按已识别绩效/得分字段", "tone": "orange"}, {"label": "考勤/状态异常", "value": "4", "sub": "状态字段命中异常", "tone": "red"}, {"label": "高工时记录", "value": "0", "sub": "疑似加班或负载偏高", "tone": "cyan"}], "insights": ["部门「研发部」综合表现/记录值最高，涉及 1 人，异常 0。", "识别到 4 条考勤或状态异常记录，需要部门负责人跟进。", "4 条记录绩效偏低，建议结合岗位和部门做辅导计划。", "HR 报告已按部门、岗位、绩效/考勤异常和负载风险形成管理视图。"], "risks": [{"level": "medium", "title": "考勤/状态异常", "detail": "4 条记录命中异常状态。", "action": "由部门负责人确认原因，区分系统漏打、真实缺勤和审批未闭环。"}, {"level": "medium", "title": "绩效辅导对象", "detail": "4 条记录绩效偏低。", "action": "结合岗位要求制定辅导、调岗或目标重设计划。"}], "assumptions": ["员工字段：员工姓名", "部门字段：部门", "岗位字段：岗位", "绩效字段：绩效得分", "工时字段：工时"], "analysis_sections": [{"kind": "bars", "title": "部门表现/覆盖", "rows": [{"name": "研发部", "value": 92.0, "share": 16.7, "detail": "1 人，异常 0"}, {"name": "运营部", "value": 80.0, "share": 16.7, "detail": "1 人，异常 0"}, {"name": "客服部", "value": 74.8, "share": 33.3, "detail": "2 人，异常 2"}, {"name": "销售部", "value": 72.0, "share": 33.3, "detail": "2 人，异常 2"}]}, {"kind": "bars", "title": "岗位结构", "rows": [{"name": "客户经理", "value": 4, "share": 33.3}, {"name": "运营专员", "value": 2, "share": 16.7}, {"name": "客服主管", "value": 2, "share": 16.7}, {"name": "客服专员", "value": 2, "share": 16.7}, {"name": "开发工程师", "value": 2, "share": 16.7}]}, {"kind": "bars", "title": "记录趋势", "rows": [{"name": "2026-04", "value": 6.0, "share": 0, "detail": "6 条记录"}, {"name": "2026-05", "value": 6.0, "share": 0, "detail": "6 条记录"}]}, {"kind": "table", "title": "人员异常明细", "columns": [{"key": "employee", "label": "员工"}, {"key": "dept", "label": "部门"}, {"key": "role", "label": "岗位"}, {"key": "score", "label": "绩效/得分"}, {"key": "hours", "label": "工时"}, {"key": "reason", "label": "风险"}], "rows": [{"employee": "李强", "dept": "销售部", "role": "客户经理", "score": "58", "hours": "214", "reason": "状态异常、绩效偏低"}, {"employee": "陈晨", "dept": "客服部", "role": "客服专员", "score": "62", "hours": "220", "reason": "状态异常、绩效偏低"}, {"employee": "李强", "dept": "销售部", "role": "客户经理", "score": "55", "hours": "218", "reason": "状态异常、绩效偏低"}, {"employee": "陈晨", "dept": "客服部", "role": "客服专员", "score": "59", "hours": "224", "reason": "状态异常、绩效偏低"}]}], "profile": {"source": "examples/sample_hr.csv", "sheet": null, "all_sheets": [], "rows": 12, "columns": 7, "column_names": ["员工姓名", "部门", "岗位", "月份", "绩效得分", "工时", "考勤状态"], "semantic_fields": {"status": "考勤状态", "period": "月份"}, "inferred_domain": {"domain": "hr-attendance", "scores": {"devops-demand-pool": 1, "ecommerce-orders": 0, "ecommerce-reviews": 0, "crm-pipeline": 3, "erp-inventory": 0, "finance-expense": 0, "hr-attendance": 7, "support-tickets": 1, "survey-feedback": 2}, "matched_signals": ["员工", "部门", "岗位", "考勤", "绩效", "得分", "工时"]}, "columns_profile": [{"name": "员工姓名", "dtype": "str", "non_null": 12, "missing": 0, "missing_rate": 0.0, "unique": 6, "top_values": [{"value": "张琳", "count": 2}, {"value": "李强", "count": 2}, {"value": "王敏", "count": 2}, {"value": "赵宁", "count": 2}, {"value": "陈晨", "count": 2}, {"value": "周洋", "count": 2}]}, {"name": "部门", "dtype": "str", "non_null": 12, "missing": 0, "missing_rate": 0.0, "unique": 4, "top_values": [{"value": "销售部", "count": 4}, {"value": "客服部", "count": 4}, {"value": "运营部", "count": 2}, {"value": "研发部", "count": 2}]}, {"name": "岗位", "dtype": "str", "non_null": 12, "missing": 0, "missing_rate": 0.0, "unique": 5, "top_values": [{"value": "客户经理", "count": 4}, {"value": "运营专员", "count": 2}, {"value": "客服主管", "count": 2}, {"value": "客服专员", "count": 2}, {"value": "开发工程师", "count": 2}]}, {"name": "月份", "dtype": "str", "non_null": 12, "missing": 0, "missing_rate": 0.0, "unique": 2, "date": {"min": "2026-04-01T00:00:00", "max": "2026-05-01T00:00:00", "non_null": 12}, "top_values": [{"value": "2026-04", "count": 6}, {"value": "2026-05", "count": 6}]}, {"name": "绩效得分", "dtype": "int64", "non_null": 12, "missing": 0, "missing_rate": 0.0, "unique": 12, "numeric": {"min": 55, "max": 93, "mean": 77.583333, "median": 83.5, "sum": 931}, "top_values": [{"value": "86", "count": 1}, {"value": "58", "count": 1}, {"value": "79", "count": 1}, {"value": "88", "count": 1}, {"value": "62", "count": 1}, {"value": "91", "count": 1}, {"value": "89", "count": 1}, {"value": "55", "count": 1}]}, {"name": "工时", "dtype": "int64", "non_null": 12, "missing": 0, "missing_rate": 0.0, "unique": 12, "numeric": {"min": 176, "max": 236, "mean": 204.333333, "median": 205.0, "sum": 2452}, "top_values": [{"value": "176", "count": 1}, {"value": "214", "count": 1}, {"value": "182", "count": 1}, {"value": "196", "count": 1}, {"value": "220", "count": 1}, {"value": "230", "count": 1}, {"value": "178", "count": 1}, {"value": "218", "count": 1}]}, {"name": "考勤状态", "dtype": "str", "non_null": 12, "missing": 0, "missing_rate": 0.0, "unique": 4, "top_values": [{"value": "正常", "count": 8}, {"value": "迟到", "count": 2}, {"value": "未打卡", "count": 1}, {"value": "旷工", "count": 1}]}], "sample_rows": [{"员工姓名": "张琳", "部门": "销售部", "岗位": "客户经理", "月份": "2026-04", "绩效得分": 86, "工时": 176, "考勤状态": "正常"}, {"员工姓名": "李强", "部门": "销售部", "岗位": "客户经理", "月份": "2026-04", "绩效得分": 58, "工时": 214, "考勤状态": "迟到"}, {"员工姓名": "王敏", "部门": "运营部", "岗位": "运营专员", "月份": "2026-04", "绩效得分": 79, "工时": 182, "考勤状态": "正常"}, {"员工姓名": "赵宁", "部门": "客服部", "岗位": "客服主管", "月份": "2026-04", "绩效得分": 88, "工时": 196, "考勤状态": "正常"}, {"员工姓名": "陈晨", "部门": "客服部", "岗位": "客服专员", "月份": "2026-04", "绩效得分": 62, "工时": 220, "考勤状态": "未打卡"}]}};
+
+const data = window.__REPORT__;
+const toneMap = {blue:"#38bdf8",green:"#34d399",orange:"#f59e0b",cyan:"#22d3ee",red:"#f87171"};
+const healthMap = {green:"#34d399",amber:"#f59e0b",red:"#ef4444"};
+function $(id){return document.getElementById(id)}
+function escText(v){return String(v ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]))}
+function compactNumber(v){
+  if(v === null || v === undefined || v === "-") return "-";
+  const n = typeof v === "string" ? parseFloat(v) : v;
+  if(isNaN(n)) return String(v);
+  if(Math.abs(n) >= 1e8) return (n/1e8).toFixed(1) + "亿";
+  if(Math.abs(n) >= 1e4) return (n/1e4).toFixed(1) + "万";
+  if(Number.isFinite(n) && !Number.isInteger(n)) return n.toLocaleString("zh-CN", {minimumFractionDigits:1, maximumFractionDigits:1});
+  return n.toLocaleString("zh-CN");
+}
+function renderBasics(){
+  $("kpiGrid").innerHTML = (data.kpis || []).map(k => `<article class="kpi" style="--tone:${toneMap[k.tone] || toneMap.blue}"><div class="kpi-label">${escText(k.label)}</div><div class="kpi-value">${escText(k.value)}</div><div class="kpi-sub">${escText(k.sub)}</div></article>`).join("");
+  $("insightList").innerHTML = (data.insights || []).map((x,i)=>`<div class="insight"><strong>${String(i+1).padStart(2,"0")}.</strong> ${escText(x)}</div>`).join("");
+  $("assumptionList").innerHTML = (data.assumptions || []).map(x=>`<div class="assumption">${escText(x)}</div>`).join("");
+  $("riskGrid").innerHTML = (data.risks || []).map(r => {
+    const color = r.level === "high" ? "#ef4444" : r.level === "medium" ? "#f59e0b" : "#38bdf8";
+    return `<article class="risk-card" style="--risk:${color}"><h3>${escText(r.title)}</h3><p>${escText(r.detail)}</p><div class="action">${escText(r.action)}</div></article>`;
+  }).join("");
+}
+function renderDevops(){
+  const funnelMax = Math.max(...(data.funnel || []).map(x=>x.value), 1);
+  const funnelHtml = `<div class="section-title"><span>04</span><h2>需求生命周期漏斗</h2></div><div class="card funnel-layout"><div class="funnel">${(data.funnel || []).map((x,i)=>{const w=92-(i*4);return `<div class="funnel-row" title="${x.desc}" style="width:${Math.max(44,w)}%;background:${x.color}">${x.label} · ${x.value}</div>`}).join("")}</div><div class="bar-list">${(data.funnel || []).map(x=>`<div class="bar-item"><span>${x.label}</span><div class="bar-track"><div class="bar-fill" style="width:${Math.max(2,x.value/funnelMax*100)}%;background:${x.color}"></div></div><strong>${x.share}%</strong></div>`).join("")}</div></div>`;
+  const catHtml = `<div class="section-title"><span>05</span><h2>各一级分类交付健康度</h2></div><div class="cat-grid">${(data.categories || []).map(c=>`<article class="cat-card" style="--health:${healthMap[c.health] || healthMap.amber}"><div class="cat-head"><div class="cat-name">${escText(c.name)}</div><div class="badge">${c.health === "green" ? "稳定交付" : c.health === "red" ? "严重风险" : "橙色预警"}</div></div><div class="cat-rate">${c.rate}%</div><div class="bar-track"><div class="bar-fill" style="width:${c.rate}%;background:var(--health)"></div></div><div class="mini-grid"><div class="mini"><b>${c.total}</b><span>总量</span></div><div class="mini"><b>${c.released}</b><span>已发布</span></div><div class="mini"><b>${c.backlog}</b><span>积压</span></div><div class="mini"><b>${c.in_progress}</b><span>推进中</span></div></div><div class="owner-line">主要经办人：${(c.owners || []).join("、") || "未识别"}</div></article>`).join("")}</div>`;
+  const specialHtml = `<div class="section-title"><span>06</span><h2>专项下钻</h2></div><div class="special-grid">${(data.specials || []).slice(0,12).map(s=>`<article class="special"><h3>${escText(s.category ? s.category + " / " + s.name : s.name)}</h3><div class="special-meta"><span>总量 ${s.total}</span><span>发布率 ${s.rate}%</span><span>Backlog ${s.backlog}</span><span>评审 ${s.tech_review}</span></div><ul class="sample-list">${(s.items || []).slice(0,4).map(item=>`<li>${escText(item.title)}${item.owner ? " · " + escText(item.owner) : ""}</li>`).join("")}</ul></article>`).join("")}</div>`;
+  $("domainSection").innerHTML = funnelHtml + catHtml + specialHtml;
+}
+function renderEcommerce(){
+  const trend = data.gmv_trend || [];
+  const catContrib = data.category_contribution || [];
+  const chContrib = data.channel_contribution || [];
+  const trendHtml = trend.length ? `<div class="section-title"><span>04</span><h2>GMV 趋势</h2></div><div class="card"><div class="bar-list">${trend.map(d=>`<div class="bar-item"><span>${d.period}</span><div class="bar-track"><div class="bar-fill" style="width:${Math.max(2,d.gmv/Math.max(...trend.map(x=>x.gmv),1)*100)}%;background:var(--accent)"></div></div><strong>¥${compactNumber(d.gmv)}</strong></div>`).join("")}</div></div>` : "";
+  const catHtml = catContrib.length ? `<div class="section-title"><span>05</span><h2>品类贡献</h2></div><div class="cat-grid">${catContrib.map(c=>`<article class="cat-card" style="--health:var(--accent)"><div class="cat-head"><div class="cat-name">${escText(c.name)}</div><div class="badge">${c.share}%</div></div><div class="cat-rate">¥${compactNumber(c.gmv)}</div><div class="bar-track"><div class="bar-fill" style="width:${c.share}%;background:var(--accent)"></div></div><div class="mini-grid"><div class="mini"><b>${c.orders}</b><span>订单</span></div><div class="mini"><b>${c.share}%</b><span>占比</span></div></div></article>`).join("")}</div>` : "";
+  const chHtml = chContrib.length ? `<div class="section-title"><span>06</span><h2>渠道贡献</h2></div><div class="cat-grid">${chContrib.map(c=>`<article class="cat-card" style="--health:var(--accent)"><div class="cat-head"><div class="cat-name">${escText(c.name)}</div><div class="badge">${c.share}%</div></div><div class="cat-rate">¥${compactNumber(c.gmv)}</div><div class="bar-track"><div class="bar-fill" style="width:${c.share}%;background:var(--accent)"></div></div><div class="mini-grid"><div class="mini"><b>${c.orders}</b><span>订单</span></div><div class="mini"><b>${c.share}%</b><span>占比</span></div></div></article>`).join("")}</div>` : "";
+  const returnHtml = data.return_rate !== undefined ? `<div class="section-title"><span>07</span><h2>退货分析</h2></div><div class="card"><div class="kpi-grid" style="grid-template-columns:repeat(3,1fr)"><div class="kpi" style="--tone:${toneMap.red}"><div class="kpi-label">退货率</div><div class="kpi-value">${data.return_rate}%</div><div class="kpi-sub">${data.returned_orders} 单退货</div></div><div class="kpi" style="--tone:${toneMap.blue}"><div class="kpi-label">总GMV</div><div class="kpi-value">¥${compactNumber(data.total_gmv)}</div><div class="kpi-sub">客单价 ¥${compactNumber(data.avg_order_value)}</div></div><div class="kpi" style="--tone:${toneMap.green}"><div class="kpi-label">成交订单</div><div class="kpi-value">${compactNumber(data.total_gmv ? (data.total_gmv - data.returned_orders * (data.avg_order_value || 0)) : 0)}</div><div class="kpi-sub">剔除退货后预估</div></div></div></div>` : "";
+  $("domainSection").innerHTML = trendHtml + catHtml + chHtml + returnHtml;
+}
+function renderFinance(){
+  const trend = data.period_trend || [];
+  const entities = data.entity_performance || [];
+  const mix = data.mix_analysis || [];
+  const exceptions = data.exception_items || [];
+  const money = v => (v === null || v === undefined || v === "-") ? "-" : "¥" + compactNumber(v);
+  const pct = v => (v === null || v === undefined || isNaN(Number(v))) ? "-" : Number(v).toFixed(1) + "%";
+  const maxRevenue = Math.max(...trend.map(x=>Math.abs(x.revenue || 0)), 1);
+  const trendHtml = trend.length ? `<div class="section-title"><span>04</span><h2>季度趋势</h2></div><div class="card"><table class="data-table"><thead><tr><th>期间</th><th>营收</th><th>净利润</th><th>毛利率</th><th>平均负债率</th><th>风险/亏损</th></tr></thead><tbody>${trend.map(d=>`<tr><td>${escText(d.period)}</td><td><div class="bar-track"><div class="bar-fill" style="width:${Math.max(3,Math.abs(d.revenue || 0)/maxRevenue*100)}%"></div></div>${money(d.revenue)}</td><td>${money(d.profit)}</td><td>${pct(d.gross_margin)}</td><td>${pct(d.debt)}</td><td>${d.high_risk || 0} 高风险 / ${d.losses || 0} 亏损</td></tr>`).join("")}</tbody></table></div>` : "";
+  const entityHtml = entities.length ? `<div class="section-title"><span>05</span><h2>主体表现与风险排行</h2></div><div class="cat-grid">${entities.slice(0,9).map(e=>{const risk=(e.high_risk||0)>0 || (e.max_debt||0)>=70 || (e.losses||0)>0;return `<article class="cat-card" style="--health:${risk ? healthMap.red : healthMap.green}"><div class="cat-head"><div class="cat-name">${escText(e.name)}</div><div class="badge">${risk ? "重点关注" : "相对稳健"}</div></div><div class="cat-rate">${money(e.revenue ?? e.profit)}</div><div class="mini-grid"><div class="mini"><b>${money(e.profit)}</b><span>净利润</span></div><div class="mini"><b>${pct(e.profit_margin)}</b><span>净利率</span></div><div class="mini"><b>${pct(e.max_debt)}</b><span>最高负债</span></div><div class="mini"><b>${e.high_risk || 0}</b><span>高风险</span></div></div><div class="owner-line">亏损期数：${e.losses || 0}；中风险：${e.medium_risk || 0}</div></article>`}).join("")}</div>` : "";
+  const mixHtml = mix.length ? `<div class="section-title"><span>06</span><h2>结构贡献</h2></div><div class="card"><div class="bar-list">${mix.map(m=>`<div class="bar-item"><span>${escText(m.name)}</span><div class="bar-track"><div class="bar-fill" style="width:${Math.max(3,m.share || 0)}%"></div></div><strong>${m.share}%</strong></div>`).join("")}</div></div>` : "";
+  const exceptionHtml = exceptions.length ? `<div class="section-title"><span>07</span><h2>异常与风险明细</h2></div><div class="card"><table class="data-table"><thead><tr><th>主体</th><th>期间</th><th>触发原因</th><th>营收</th><th>净利润</th><th>负债率</th></tr></thead><tbody>${exceptions.map(x=>`<tr><td>${escText(x.entity)}</td><td>${escText(x.period)}</td><td>${escText(x.reason)}</td><td>${money(x.revenue)}</td><td>${money(x.profit)}</td><td>${pct(x.debt)}</td></tr>`).join("")}</tbody></table></div>` : "";
+  $("domainSection").innerHTML = trendHtml + entityHtml + mixHtml + exceptionHtml;
+}
+function renderAnalysisSections(){
+  const sections = data.analysis_sections || [];
+  const html = sections.map((section, idx) => {
+    const number = String(idx + 4).padStart(2, "0");
+    const title = `<div class="section-title"><span>${number}</span><h2>${escText(section.title)}</h2></div>`;
+    if(section.kind === "bars"){
+      const rows = section.rows || [];
+      const maxValue = Math.max(...rows.map(r => Math.abs(Number(r.value) || 0)), 1);
+      return title + `<div class="card"><div class="bar-list">${rows.map(r => `<div class="bar-item"><span>${escText(r.name)}</span><div class="bar-track"><div class="bar-fill" style="width:${Math.max(3, Math.abs(Number(r.value) || 0) / maxValue * 100)}%"></div></div><strong>${r.share !== undefined && r.share !== 0 ? escText(r.share) + "%" : compactNumber(r.value)}</strong><small>${escText(r.detail || "")}</small></div>`).join("")}</div></div>`;
+    }
+    if(section.kind === "cards"){
+      const rows = section.rows || [];
+      return title + `<div class="cat-grid">${rows.map(r => `<article class="cat-card" style="--health:${toneMap[r.tone] || "var(--accent)"}"><div class="cat-head"><div class="cat-name">${escText(r.title || r.name)}</div><div class="badge">${escText(r.badge || "")}</div></div><div class="cat-rate">${escText(r.value ?? "")}</div><div class="owner-line">${escText(r.detail || r.sub || "")}</div></article>`).join("")}</div>`;
+    }
+    if(section.kind === "table"){
+      const cols = section.columns || [];
+      const rows = section.rows || [];
+      return title + `<div class="card"><table class="data-table"><thead><tr>${cols.map(c => `<th>${escText(c.label || c.key)}</th>`).join("")}</tr></thead><tbody>${rows.map(row => `<tr>${cols.map(c => `<td>${escText(row[c.key])}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+    }
+    return "";
+  }).join("");
+  $("domainSection").innerHTML = html;
+}
+function renderGeneric(){
+  const cats = data.category_columns || [];
+  const nums = data.numeric_columns || [];
+  const trend = data.trend_series || [];
+  const mix = data.category_mix || [];
+  const outliers = data.outliers || [];
+  const maxTrend = Math.max(...trend.map(x=>Math.abs(x.value || 0)), 1);
+  const trendHtml = trend.length ? `<div class="section-title"><span>04</span><h2>趋势变化</h2></div><div class="card"><div class="bar-list">${trend.map(d=>`<div class="bar-item"><span>${escText(d.period)}</span><div class="bar-track"><div class="bar-fill" style="width:${Math.max(3,Math.abs(d.value || 0)/maxTrend*100)}%"></div></div><strong>${compactNumber(d.value)}</strong></div>`).join("")}</div></div>` : "";
+  const mixHtml = mix.length ? `<div class="section-title"><span>05</span><h2>结构贡献</h2></div><div class="cat-grid">${mix.map(c=>`<article class="cat-card" style="--health:var(--accent)"><div class="cat-head"><div class="cat-name">${escText(c.name)}</div><div class="badge">${escText(c.metric || "指标")} · ${c.share}%</div></div><div class="cat-rate">${compactNumber(c.amount)}</div><div class="bar-track"><div class="bar-fill" style="width:${Math.max(3,c.share || 0)}%;background:var(--accent)"></div></div><div class="owner-line">记录数：${c.records}</div></article>`).join("")}</div>` : "";
+  const catHtml = (!mix.length && cats.length) ? `<div class="section-title"><span>05</span><h2>主要分类分布</h2></div><div class="metric-grid">${cats.map(c=>`<article class="metric-card"><h3>${escText(c.name)}</h3><div class="top-values">${(c.top_values || []).slice(0,6).map(v=>`<div class="top-row"><span>${escText(v.value)}</span><strong>${v.count}</strong></div>`).join("")}</div></article>`).join("")}</div>` : "";
+  const numHtml = nums.length ? `<div class="section-title"><span>06</span><h2>数值字段概览</h2></div><div class="metric-grid">${nums.map(n=>`<article class="metric-card"><h3>${escText(n.name)}</h3><div class="mini-grid"><div class="mini"><b>${compactNumber(n.numeric.sum)}</b><span>总计</span></div><div class="mini"><b>${compactNumber(n.numeric.mean)}</b><span>均值</span></div><div class="mini"><b>${compactNumber(n.numeric.max)}</b><span>最大</span></div><div class="mini"><b>${compactNumber(n.numeric.min)}</b><span>最小</span></div></div></article>`).join("")}</div>` : "";
+  const outlierHtml = outliers.length ? `<div class="section-title"><span>07</span><h2>异常高值</h2></div><div class="card"><table class="data-table"><thead><tr><th>字段</th><th>对象</th><th>数值</th><th>基准中位数</th></tr></thead><tbody>${outliers.map(x=>`<tr><td>${escText(x.field)}</td><td>${escText(x.label)}</td><td>${compactNumber(x.value)}</td><td>${compactNumber(x.baseline)}</td></tr>`).join("")}</tbody></table></div>` : "";
+  $("domainSection").innerHTML = trendHtml + mixHtml + catHtml + numHtml + outlierHtml;
+}
+function animateBg(){
+  const canvas = $("bgCanvas");
+  const ctx = canvas.getContext("2d");
+  let points = [];
+  function resize(){canvas.width=innerWidth;canvas.height=innerHeight;points=Array.from({length:46},()=>({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,r:Math.random()*2+0.4}))}
+  function step(){ctx.clearRect(0,0,canvas.width,canvas.height);ctx.fillStyle="rgba(56,189,248,.18)";for(const p of points){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>canvas.width)p.vx*=-1;if(p.y<0||p.y>canvas.height)p.vy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill()}requestAnimationFrame(step)}
+  resize();addEventListener("resize",resize);step();
+}
+renderBasics();
+if(data.domain === "devops-demand-pool") renderDevops();
+else if(data.domain === "ecommerce-orders") renderEcommerce();
+else if(data.domain === "finance-expense") renderFinance();
+else if(data.analysis_sections) renderAnalysisSections();
+else renderGeneric();
+animateBg();
+
+  </script>
+</body>
+</html>

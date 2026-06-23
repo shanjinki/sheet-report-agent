@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CRM 商机管道分析报告</title>
+  <style>
+
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:"PingFang SC","Microsoft YaHei",Arial,sans-serif}body{overflow-x:hidden}.page-shell{position:relative;z-index:1;width:min(1180px,calc(100% - 32px));margin:0 auto;padding:44px 0 64px}#bgCanvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}.theme-command{background:#08111f;color:#e5eefc}.theme-light{background:#f4f7fb;color:#142033}.theme-retail{background:#fff7ed;color:#1f2937}.theme-ledger{background:#101815;color:#e7f5ee}.theme-editorial{background:#fbf4e9;color:#241b15}.theme-studio{background:#101020;color:#eeeaff}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:24px;align-items:end;padding:32px 0 28px}.eyebrow{letter-spacing:.18em;text-transform:uppercase;font-size:12px;color:var(--muted);margin:0 0 12px}.hero h1{font-size:clamp(34px,5vw,64px);line-height:1.05;margin:0 0 14px;letter-spacing:0}.subtitle{font-size:18px;line-height:1.7;color:var(--muted);margin:0;max-width:760px}.meta-panel{border:1px solid var(--border);background:var(--card);border-radius:18px;padding:18px 18px;display:grid;grid-template-columns:84px 1fr;gap:8px 10px;box-shadow:var(--shadow)}.meta-panel span{color:var(--muted);font-size:12px}.meta-panel strong{font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.section{margin:22px 0}.section-title,.card-title{display:flex;align-items:center;gap:10px;margin-bottom:14px}.section-title span,.card-title span{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:26px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:800}.section-title h2,.card-title h2{font-size:20px;margin:0}.two-col{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}.card,.kpi,.cat-card,.risk-card,.metric-card{background:var(--card);border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow);backdrop-filter:blur(14px)}.card{padding:22px}.kpi-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}.kpi{position:relative;overflow:hidden;padding:18px 16px;min-height:132px}.kpi:before{content:"";position:absolute;inset:0 0 auto;height:3px;background:var(--tone,#38bdf8)}.kpi-label{font-size:13px;color:var(--muted);margin-bottom:10px}.kpi-value{font-size:36px;font-weight:850;line-height:1;margin-bottom:10px}.kpi-sub{font-size:12px;line-height:1.5;color:var(--muted)}.insight-list{display:grid;gap:12px}.insight{padding:14px 14px;border-radius:14px;background:var(--panel);border:1px solid var(--border);line-height:1.65}.insight strong{color:var(--accent)}.assumption-list{display:grid;gap:9px}.assumption{padding:10px 12px;border-radius:12px;background:var(--panel);color:var(--muted);font-size:13px}.funnel-layout{display:grid;grid-template-columns:380px minmax(0,1fr);gap:18px}.funnel{display:flex;flex-direction:column;align-items:center;padding:18px}.funnel-row{height:42px;margin-top:-5px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:12px;text-shadow:0 1px 2px rgba(0,0,0,.28);clip-path:polygon(8% 0,92% 0,100% 100%,0 100%);min-width:130px}.funnel-row:first-child{margin-top:0}.bar-list{display:grid;gap:10px}.bar-item{display:grid;grid-template-columns:118px 1fr 76px minmax(120px,.7fr);gap:10px;align-items:center;font-size:13px}.bar-item small{color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.bar-track{height:10px;background:var(--panel);border-radius:999px;overflow:hidden}.bar-fill{height:100%;border-radius:999px;background:var(--accent)}.cat-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.cat-card{padding:18px;position:relative;overflow:hidden}.cat-card:before{content:"";position:absolute;inset:0 0 auto;height:3px;background:var(--health)}.cat-head{display:flex;justify-content:space-between;gap:10px;margin-bottom:14px}.cat-name{font-size:20px;font-weight:850}.badge{font-size:12px;border-radius:999px;padding:5px 9px;background:var(--panel);color:var(--muted);white-space:nowrap}.cat-rate{font-size:34px;font-weight:900;color:var(--health);margin-bottom:8px}.mini-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}.mini{padding:9px;border-radius:12px;background:var(--panel);text-align:center}.mini b{display:block;font-size:18px}.mini span{font-size:11px;color:var(--muted)}.owner-line{margin-top:12px;font-size:12px;color:var(--muted);line-height:1.5}.special-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.special{padding:14px;border-radius:14px;background:var(--panel);border:1px solid var(--border)}.special h3{margin:0 0 8px;font-size:15px}.special-meta{display:flex;flex-wrap:wrap;gap:8px;color:var(--muted);font-size:12px}.sample-list{margin:10px 0 0;padding:0;list-style:none;display:grid;gap:7px}.sample-list li{font-size:12px;color:var(--muted);line-height:1.45}.risk-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.risk-card{padding:18px;border-left:4px solid var(--risk)}.risk-card h3{margin:0 0 8px;font-size:17px}.risk-card p{margin:0 0 10px;color:var(--muted);line-height:1.6}.risk-card .action{padding:10px 12px;border-radius:12px;background:var(--panel);font-size:13px;line-height:1.55}.metric-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.metric-card{padding:18px}.metric-card h3{margin:0 0 12px}.top-values{display:grid;gap:9px}.top-row{display:grid;grid-template-columns:minmax(0,1fr) 60px;gap:10px;align-items:center;font-size:13px}.data-table{width:100%;border-collapse:separate;border-spacing:0 8px}.data-table th{color:var(--muted);font-size:12px;text-align:left;font-weight:700;padding:0 10px 4px}.data-table td{background:var(--panel);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:11px 10px;font-size:13px;line-height:1.45}.data-table td:first-child{border-left:1px solid var(--border);border-radius:12px 0 0 12px}.data-table td:last-child{border-right:1px solid var(--border);border-radius:0 12px 12px 0}.theme-command{--card:rgba(10,19,43,.82);--panel:rgba(15,28,58,.76);--border:rgba(56,189,248,.18);--muted:#93a4bb;--accent:#38bdf8;--accent-soft:rgba(56,189,248,.13);--shadow:0 18px 50px rgba(0,0,0,.28)}.theme-light{--card:rgba(255,255,255,.92);--panel:#eef3f8;--border:#dbe4ef;--muted:#64748b;--accent:#1d4ed8;--accent-soft:#dbeafe;--shadow:0 18px 45px rgba(15,23,42,.08)}.theme-retail{--card:rgba(255,255,255,.9);--panel:#fff1e7;--border:#fed7aa;--muted:#7c5b45;--accent:#f97316;--accent-soft:#ffedd5;--shadow:0 18px 45px rgba(154,52,18,.1)}.theme-ledger{--card:rgba(15,31,27,.88);--panel:rgba(30,54,48,.72);--border:rgba(52,211,153,.18);--muted:#9cb5aa;--accent:#34d399;--accent-soft:rgba(52,211,153,.14);--shadow:0 18px 50px rgba(0,0,0,.24)}.theme-editorial{--card:rgba(255,252,245,.94);--panel:#f4eadb;--border:#e8d8c3;--muted:#7b6653;--accent:#9f6b44;--accent-soft:#ead9c3;--shadow:0 18px 45px rgba(89,58,31,.09)}.theme-studio{--card:rgba(18,18,32,.86);--panel:rgba(38,34,58,.72);--border:rgba(139,92,246,.2);--muted:#a6a0bd;--accent:#8b5cf6;--accent-soft:rgba(139,92,246,.16);--shadow:0 18px 50px rgba(0,0,0,.26)}@media(max-width:980px){.hero,.two-col,.funnel-layout{grid-template-columns:1fr}.kpi-grid,.cat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.risk-grid,.special-grid,.metric-grid{grid-template-columns:1fr}}@media(max-width:640px){.page-shell{width:min(100% - 20px,1180px);padding-top:24px}.kpi-grid,.cat-grid{grid-template-columns:1fr}.hero h1{font-size:36px}.bar-item{grid-template-columns:1fr}.bar-item small{white-space:normal}.meta-panel{grid-template-columns:72px 1fr}.data-table{display:block;overflow-x:auto;white-space:nowrap}}
+
+  </style>
+</head>
+<body class="theme-light">
+  <canvas id="bgCanvas" aria-hidden="true"></canvas>
+  <main class="page-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">crm-pipeline · Boardroom Light</p>
+        <h1>CRM 商机管道分析报告</h1>
+        <p class="subtitle">分析销售 pipeline 健康度、跟进风险和行动建议</p>
+      </div>
+      <div class="meta-panel">
+        <span>生成时间</span><strong>2026-06-19 18:19</strong>
+        <span>数据源</span><strong>sample_crm.csv</strong>
+        <span>工作表</span><strong>默认</strong>
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="section-title"><span>01</span><h2>全局概览</h2></div>
+      <div class="kpi-grid" id="kpiGrid"></div>
+    </section>
+
+    <section class="section two-col">
+      <article class="card">
+        <div class="card-title"><span>02</span><h2>关键洞察</h2></div>
+        <div id="insightList" class="insight-list"></div>
+      </article>
+      <article class="card">
+        <div class="card-title"><span>03</span><h2>口径假设</h2></div>
+        <div id="assumptionList" class="assumption-list"></div>
+      </article>
+    </section>
+
+    <section class="section" id="domainSection"></section>
+
+    <section class="section">
+      <div class="section-title"><span>90</span><h2>风险清单与行动建议</h2></div>
+      <div class="risk-grid" id="riskGrid"></div>
+    </section>
+  </main>
+
+  <script>
+    window.__REPORT__ = {"domain": "crm-pipeline", "title": "CRM 商机管道分析报告", "subtitle": "分析销售 pipeline 健康度、跟进风险和行动建议", "generated_at": "2026-06-19 18:19", "source": "examples/sample_crm.csv", "sheet": null, "kpis": [{"label": "商机数", "value": "12", "sub": "4 位负责人", "tone": "blue"}, {"label": "Pipeline 金额", "value": "437.0万", "sub": "开放商机 9 条", "tone": "green"}, {"label": "赢单率", "value": "16.7%", "sub": "赢单 2 条，输单 1 条", "tone": "orange"}, {"label": "过期跟进", "value": "4", "sub": "未设置下次跟进 2 条", "tone": "red"}, {"label": "已赢金额", "value": "91.0万", "sub": "按已识别赢单阶段统计", "tone": "cyan"}], "insights": ["当前商机最多停留在「需求确认」阶段，占比 25.0%。", "开放 Pipeline 金额 437.0万，需要优先推进高金额且临近成交的商机。", "4 条开放商机跟进已过期，2 条缺少下一步动作。", "「展会」贡献最高商机金额 156.0万。"], "risks": [{"level": "high", "title": "商机跟进过期", "detail": "4 条开放商机下次跟进日期已过。", "action": "要求负责人当天更新下一步动作、预计成交时间和阻塞原因。"}, {"level": "medium", "title": "缺少下一步动作", "detail": "2 条开放商机没有下次跟进日期。", "action": "建立 CRM 数据卫生规则，未设置下一步的商机不得进入预测。"}], "assumptions": ["客户字段：客户名称", "阶段字段：商机阶段", "金额字段：预计金额", "负责人字段：销售负责人", "下次跟进字段：下次跟进"], "analysis_sections": [{"kind": "bars", "title": "销售漏斗阶段分布", "rows": [{"name": "需求确认", "value": 3, "share": 25.0}, {"name": "方案报价", "value": 3, "share": 25.0}, {"name": "商务谈判", "value": 2, "share": 16.7}, {"name": "已赢单", "value": 2, "share": 16.7}, {"name": "PoC验证", "value": 1, "share": 8.3}, {"name": "已输单", "value": 1, "share": 8.3}]}, {"kind": "bars", "title": "负责人 Pipeline 排行", "rows": [{"name": "周销售", "value": 1950000.0, "share": 25.0, "detail": "3 条商机，赢单 1 条"}, {"name": "赵销售", "value": 1490000.0, "share": 25.0, "detail": "3 条商机，赢单 0 条"}, {"name": "吴销售", "value": 1070000.0, "share": 25.0, "detail": "3 条商机，赢单 1 条"}, {"name": "林销售", "value": 1030000.0, "share": 25.0, "detail": "3 条商机，赢单 0 条"}]}, {"kind": "bars", "title": "线索来源贡献", "rows": [{"name": "展会", "value": 1560000.0, "share": 28.2, "detail": "2 条记录"}, {"name": "官网线索", "value": 1200000.0, "share": 21.7, "detail": "4 条记录"}, {"name": "老客户转介绍", "value": 1050000.0, "share": 19.0, "detail": "3 条记录"}, {"name": "渠道伙伴", "value": 980000.0, "share": 17.7, "detail": "2 条记录"}, {"name": "行业活动", "value": 750000.0, "share": 13.5, "detail": "1 条记录"}]}, {"kind": "bars", "title": "创建/跟进趋势", "rows": [{"name": "2026-03", "value": 780000.0, "share": 0, "detail": "2 条记录"}, {"name": "2026-04", "value": 2370000.0, "share": 0, "detail": "4 条记录"}, {"name": "2026-05", "value": 1640000.0, "share": 0, "detail": "5 条记录"}, {"name": "2026-06", "value": 750000.0, "share": 0, "detail": "1 条记录"}]}, {"kind": "table", "title": "跟进风险明细", "columns": [{"key": "customer", "label": "客户"}, {"key": "opportunity", "label": "商机"}, {"key": "owner", "label": "负责人"}, {"key": "stage", "label": "阶段"}, {"key": "amount", "label": "金额"}, {"key": "reason", "label": "原因"}], "rows": [{"customer": "华东连锁集团", "opportunity": "门店数字化一期", "owner": "林销售", "stage": "需求确认", "amount": "42.0万", "reason": "跟进已过期"}, {"customer": "青云零售", "opportunity": "会员运营升级", "owner": "林销售", "stage": "商务谈判", "amount": "35.0万", "reason": "跟进已过期"}, {"customer": "海川物流", "opportunity": "运输调度看板", "owner": "赵销售", "stage": "需求确认", "amount": "28.0万", "reason": "未设置下次跟进"}, {"customer": "鼎新科技", "opportunity": "数据中台 PoC", "owner": "周销售", "stage": "PoC验证", "amount": "88.0万", "reason": "跟进已过期"}, {"customer": "安禾能源", "opportunity": "项目管理平台", "owner": "赵销售", "stage": "需求确认", "amount": "75.0万", "reason": "未设置下次跟进"}, {"customer": "明珠物业", "opportunity": "客服系统替换", "owner": "吴销售", "stage": "方案报价", "amount": "24.0万", "reason": "跟进已过期"}]}], "profile": {"source": "examples/sample_crm.csv", "sheet": null, "all_sheets": [], "rows": 12, "columns": 8, "column_names": ["客户名称", "商机名称", "商机阶段", "销售负责人", "预计金额", "线索来源", "下次跟进", "创建时间"], "semantic_fields": {"title": "客户名称", "status": "商机阶段", "owner": "销售负责人", "amount": "预计金额", "date": "创建时间"}, "inferred_domain": {"domain": "crm-pipeline", "scores": {"devops-demand-pool": 1, "ecommerce-orders": 3, "ecommerce-reviews": 2, "crm-pipeline": 12, "erp-inventory": 0, "finance-expense": 1, "hr-attendance": 0, "support-tickets": 2, "survey-feedback": 0}, "matched_signals": ["客户", "线索", "商机", "商机名称", "阶段", "销售", "预计金额", "赢单", "输单", "跟进", "下次跟进", "来源"]}, "columns_profile": [{"name": "客户名称", "dtype": "str", "non_null": 12, "missing": 0, "missing_rate": 0.0, "unique": 12, "top_values": [{"value": "华东连锁集团", "count": 1}, {"value": "北辰制造", "count": 1}, {"value": "青云零售", "count": 1}, {"value": "星河医药", "count": 1}, {"value": "海川物流", "count": 1}, {"value": "南山教育", "count": 1}, {"value": "鼎新科技", "count": 1}, {"value": "远航汽车", "count": 1}]}, {"name": "商机名称", "dtype": "str", "non_null": 12, "missing": 0, "missing_rate": 0.0, "unique": 12, "top_values": [{"value": "门店数字化一期", "count": 1}, {"value": "供应链协同平台", "count": 1}, {"value": "会员运营升级", "count": 1}, {"value": "费用报销系统", "count": 1}, {"value": "运输调度看板", "count": 1}, {"value": "招生 CRM 续约", "count": 1}, {"value": "数据中台 PoC", "count": 1}, {"value": "售后工单集成", "count": 1}]}, {"name": "商机阶段", "dtype": "str", "non_null": 12, "missing": 0, "missing_rate": 0.0, "unique": 6, "top_values": [{"value": "需求确认", "count": 3}, {"value": "方案报价", "count": 3}, {"value": "商务谈判", "count": 2}, {"value": "已赢单", "count": 2}, {"value": "PoC验证", "count": 1}, {"value": "已输单", "count": 1}]}, {"name": "销售负责人", "dtype": "str", "non_null": 12, "missing": 0, "missing_rate": 0.0, "unique": 4, "top_values": [{"value": "林销售", "count": 3}, {"value": "周销售", "count": 3}, {"value": "吴销售", "count": 3}, {"value": "赵销售", "count": 3}]}, {"name": "预计金额", "dtype": "int64", "non_null": 12, "missing": 0, "missing_rate": 0.0, "unique": 12, "numeric": {"min": 240000, "max": 880000, "mean": 461666.666667, "median": 405000.0, "sum": 5540000}, "top_values": [{"value": "420000", "count": 1}, {"value": "680000", "count": 1}, {"value": "350000", "count": 1}, {"value": "520000", "count": 1}, {"value": "280000", "count": 1}, {"value": "310000", "count": 1}, {"value": "880000", "count": 1}, {"value": "460000", "count": 1}]}, {"name": "线索来源", "dtype": "str", "non_null": 12, "missing": 0, "missing_rate": 0.0, "unique": 5, "top_values": [{"value": "官网线索", "count": 4}, {"value": "老客户转介绍", "count": 3}, {"value": "展会", "count": 2}, {"value": "渠道伙伴", "count": 2}, {"value": "行业活动", "count": 1}]}, {"name": "下次跟进", "dtype": "str", "non_null": 10, "missing": 2, "missing_rate": 0.1667, "unique": 10, "date": {"min": "2026-06-01T00:00:00", "max": "2026-06-26T00:00:00", "non_null": 10}, "top_values": [{"value": "2026-06-10", "count": 1}, {"value": "2026-06-26", "count": 1}, {"value": "2026-06-18", "count": 1}, {"value": "2026-06-15", "count": 1}, {"value": "2026-06-21", "count": 1}, {"value": "2026-06-12", "count": 1}, {"value": "2026-06-24", "count": 1}, {"value": "2026-06-01", "count": 1}]}, {"name": "创建时间", "dtype": "str", "non_null": 12, "missing": 0, "missing_rate": 0.0, "unique": 12, "date": {"min": "2026-03-18T00:00:00", "max": "2026-06-01T00:00:00", "non_null": 12}, "top_values": [{"value": "2026-04-03", "count": 1}, {"value": "2026-04-12", "count": 1}, {"value": "2026-05-02", "count": 1}, {"value": "2026-03-18", "count": 1}, {"value": "2026-05-19", "count": 1}, {"value": "2026-05-08", "count": 1}, {"value": "2026-04-28", "count": 1}, {"value": "2026-05-11", "count": 1}]}], "sample_rows": [{"客户名称": "华东连锁集团", "商机名称": "门店数字化一期", "商机阶段": "需求确认", "销售负责人": "林销售", "预计金额": 420000, "线索来源": "官网线索", "下次跟进": "2026-06-10", "创建时间": "2026-04-03"}, {"客户名称": "北辰制造", "商机名称": "供应链协同平台", "商机阶段": "方案报价", "销售负责人": "周销售", "预计金额": 680000, "线索来源": "展会", "下次跟进": "2026-06-26", "创建时间": "2026-04-12"}, {"客户名称": "青云零售", "商机名称": "会员运营升级", "商机阶段": "商务谈判", "销售负责人": "林销售", "预计金额": 350000, "线索来源": "老客户转介绍", "下次跟进": "2026-06-18", "创建时间": "2026-05-02"}, {"客户名称": "星河医药", "商机名称": "费用报销系统", "商机阶段": "已赢单", "销售负责人": "吴销售", "预计金额": 520000, "线索来源": "渠道伙伴", "下次跟进": "2026-06-15", "创建时间": "2026-03-18"}, {"客户名称": "海川物流", "商机名称": "运输调度看板", "商机阶段": "需求确认", "销售负责人": "赵销售", "预计金额": 280000, "线索来源": "官网线索", "下次跟进": null, "创建时间": "2026-05-19"}]}};
+
+const data = window.__REPORT__;
+const toneMap = {blue:"#38bdf8",green:"#34d399",orange:"#f59e0b",cyan:"#22d3ee",red:"#f87171"};
+const healthMap = {green:"#34d399",amber:"#f59e0b",red:"#ef4444"};
+function $(id){return document.getElementById(id)}
+function escText(v){return String(v ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]))}
+function compactNumber(v){
+  if(v === null || v === undefined || v === "-") return "-";
+  const n = typeof v === "string" ? parseFloat(v) : v;
+  if(isNaN(n)) return String(v);
+  if(Math.abs(n) >= 1e8) return (n/1e8).toFixed(1) + "亿";
+  if(Math.abs(n) >= 1e4) return (n/1e4).toFixed(1) + "万";
+  if(Number.isFinite(n) && !Number.isInteger(n)) return n.toLocaleString("zh-CN", {minimumFractionDigits:1, maximumFractionDigits:1});
+  return n.toLocaleString("zh-CN");
+}
+function renderBasics(){
+  $("kpiGrid").innerHTML = (data.kpis || []).map(k => `<article class="kpi" style="--tone:${toneMap[k.tone] || toneMap.blue}"><div class="kpi-label">${escText(k.label)}</div><div class="kpi-value">${escText(k.value)}</div><div class="kpi-sub">${escText(k.sub)}</div></article>`).join("");
+  $("insightList").innerHTML = (data.insights || []).map((x,i)=>`<div class="insight"><strong>${String(i+1).padStart(2,"0")}.</strong> ${escText(x)}</div>`).join("");
+  $("assumptionList").innerHTML = (data.assumptions || []).map(x=>`<div class="assumption">${escText(x)}</div>`).join("");
+  $("riskGrid").innerHTML = (data.risks || []).map(r => {
+    const color = r.level === "high" ? "#ef4444" : r.level === "medium" ? "#f59e0b" : "#38bdf8";
+    return `<article class="risk-card" style="--risk:${color}"><h3>${escText(r.title)}</h3><p>${escText(r.detail)}</p><div class="action">${escText(r.action)}</div></article>`;
+  }).join("");
+}
+function renderDevops(){
+  const funnelMax = Math.max(...(data.funnel || []).map(x=>x.value), 1);
+  const funnelHtml = `<div class="section-title"><span>04</span><h2>需求生命周期漏斗</h2></div><div class="card funnel-layout"><div class="funnel">${(data.funnel || []).map((x,i)=>{const w=92-(i*4);return `<div class="funnel-row" title="${x.desc}" style="width:${Math.max(44,w)}%;background:${x.color}">${x.label} · ${x.value}</div>`}).join("")}</div><div class="bar-list">${(data.funnel || []).map(x=>`<div class="bar-item"><span>${x.label}</span><div class="bar-track"><div class="bar-fill" style="width:${Math.max(2,x.value/funnelMax*100)}%;background:${x.color}"></div></div><strong>${x.share}%</strong></div>`).join("")}</div></div>`;
+  const catHtml = `<div class="section-title"><span>05</span><h2>各一级分类交付健康度</h2></div><div class="cat-grid">${(data.categories || []).map(c=>`<article class="cat-card" style="--health:${healthMap[c.health] || healthMap.amber}"><div class="cat-head"><div class="cat-name">${escText(c.name)}</div><div class="badge">${c.health === "green" ? "稳定交付" : c.health === "red" ? "严重风险" : "橙色预警"}</div></div><div class="cat-rate">${c.rate}%</div><div class="bar-track"><div class="bar-fill" style="width:${c.rate}%;background:var(--health)"></div></div><div class="mini-grid"><div class="mini"><b>${c.total}</b><span>总量</span></div><div class="mini"><b>${c.released}</b><span>已发布</span></div><div class="mini"><b>${c.backlog}</b><span>积压</span></div><div class="mini"><b>${c.in_progress}</b><span>推进中</span></div></div><div class="owner-line">主要经办人：${(c.owners || []).join("、") || "未识别"}</div></article>`).join("")}</div>`;
+  const specialHtml = `<div class="section-title"><span>06</span><h2>专项下钻</h2></div><div class="special-grid">${(data.specials || []).slice(0,12).map(s=>`<article class="special"><h3>${escText(s.category ? s.category + " / " + s.name : s.name)}</h3><div class="special-meta"><span>总量 ${s.total}</span><span>发布率 ${s.rate}%</span><span>Backlog ${s.backlog}</span><span>评审 ${s.tech_review}</span></div><ul class="sample-list">${(s.items || []).slice(0,4).map(item=>`<li>${escText(item.title)}${item.owner ? " · " + escText(item.owner) : ""}</li>`).join("")}</ul></article>`).join("")}</div>`;
+  $("domainSection").innerHTML = funnelHtml + catHtml + specialHtml;
+}
+function renderEcommerce(){
+  const trend = data.gmv_trend || [];
+  const catContrib = data.category_contribution || [];
+  const chContrib = data.channel_contribution || [];
+  const trendHtml = trend.length ? `<div class="section-title"><span>04</span><h2>GMV 趋势</h2></div><div class="card"><div class="bar-list">${trend.map(d=>`<div class="bar-item"><span>${d.period}</span><div class="bar-track"><div class="bar-fill" style="width:${Math.max(2,d.gmv/Math.max(...trend.map(x=>x.gmv),1)*100)}%;background:var(--accent)"></div></div><strong>¥${compactNumber(d.gmv)}</strong></div>`).join("")}</div></div>` : "";
+  const catHtml = catContrib.length ? `<div class="section-title"><span>05</span><h2>品类贡献</h2></div><div class="cat-grid">${catContrib.map(c=>`<article class="cat-card" style="--health:var(--accent)"><div class="cat-head"><div class="cat-name">${escText(c.name)}</div><div class="badge">${c.share}%</div></div><div class="cat-rate">¥${compactNumber(c.gmv)}</div><div class="bar-track"><div class="bar-fill" style="width:${c.share}%;background:var(--accent)"></div></div><div class="mini-grid"><div class="mini"><b>${c.orders}</b><span>订单</span></div><div class="mini"><b>${c.share}%</b><span>占比</span></div></div></article>`).join("")}</div>` : "";
+  const chHtml = chContrib.length ? `<div class="section-title"><span>06</span><h2>渠道贡献</h2></div><div class="cat-grid">${chContrib.map(c=>`<article class="cat-card" style="--health:var(--accent)"><div class="cat-head"><div class="cat-name">${escText(c.name)}</div><div class="badge">${c.share}%</div></div><div class="cat-rate">¥${compactNumber(c.gmv)}</div><div class="bar-track"><div class="bar-fill" style="width:${c.share}%;background:var(--accent)"></div></div><div class="mini-grid"><div class="mini"><b>${c.orders}</b><span>订单</span></div><div class="mini"><b>${c.share}%</b><span>占比</span></div></div></article>`).join("")}</div>` : "";
+  const returnHtml = data.return_rate !== undefined ? `<div class="section-title"><span>07</span><h2>退货分析</h2></div><div class="card"><div class="kpi-grid" style="grid-template-columns:repeat(3,1fr)"><div class="kpi" style="--tone:${toneMap.red}"><div class="kpi-label">退货率</div><div class="kpi-value">${data.return_rate}%</div><div class="kpi-sub">${data.returned_orders} 单退货</div></div><div class="kpi" style="--tone:${toneMap.blue}"><div class="kpi-label">总GMV</div><div class="kpi-value">¥${compactNumber(data.total_gmv)}</div><div class="kpi-sub">客单价 ¥${compactNumber(data.avg_order_value)}</div></div><div class="kpi" style="--tone:${toneMap.green}"><div class="kpi-label">成交订单</div><div class="kpi-value">${compactNumber(data.total_gmv ? (data.total_gmv - data.returned_orders * (data.avg_order_value || 0)) : 0)}</div><div class="kpi-sub">剔除退货后预估</div></div></div></div>` : "";
+  $("domainSection").innerHTML = trendHtml + catHtml + chHtml + returnHtml;
+}
+function renderFinance(){
+  const trend = data.period_trend || [];
+  const entities = data.entity_performance || [];
+  const mix = data.mix_analysis || [];
+  const exceptions = data.exception_items || [];
+  const money = v => (v === null || v === undefined || v === "-") ? "-" : "¥" + compactNumber(v);
+  const pct = v => (v === null || v === undefined || isNaN(Number(v))) ? "-" : Number(v).toFixed(1) + "%";
+  const maxRevenue = Math.max(...trend.map(x=>Math.abs(x.revenue || 0)), 1);
+  const trendHtml = trend.length ? `<div class="section-title"><span>04</span><h2>季度趋势</h2></div><div class="card"><table class="data-table"><thead><tr><th>期间</th><th>营收</th><th>净利润</th><th>毛利率</th><th>平均负债率</th><th>风险/亏损</th></tr></thead><tbody>${trend.map(d=>`<tr><td>${escText(d.period)}</td><td><div class="bar-track"><div class="bar-fill" style="width:${Math.max(3,Math.abs(d.revenue || 0)/maxRevenue*100)}%"></div></div>${money(d.revenue)}</td><td>${money(d.profit)}</td><td>${pct(d.gross_margin)}</td><td>${pct(d.debt)}</td><td>${d.high_risk || 0} 高风险 / ${d.losses || 0} 亏损</td></tr>`).join("")}</tbody></table></div>` : "";
+  const entityHtml = entities.length ? `<div class="section-title"><span>05</span><h2>主体表现与风险排行</h2></div><div class="cat-grid">${entities.slice(0,9).map(e=>{const risk=(e.high_risk||0)>0 || (e.max_debt||0)>=70 || (e.losses||0)>0;return `<article class="cat-card" style="--health:${risk ? healthMap.red : healthMap.green}"><div class="cat-head"><div class="cat-name">${escText(e.name)}</div><div class="badge">${risk ? "重点关注" : "相对稳健"}</div></div><div class="cat-rate">${money(e.revenue ?? e.profit)}</div><div class="mini-grid"><div class="mini"><b>${money(e.profit)}</b><span>净利润</span></div><div class="mini"><b>${pct(e.profit_margin)}</b><span>净利率</span></div><div class="mini"><b>${pct(e.max_debt)}</b><span>最高负债</span></div><div class="mini"><b>${e.high_risk || 0}</b><span>高风险</span></div></div><div class="owner-line">亏损期数：${e.losses || 0}；中风险：${e.medium_risk || 0}</div></article>`}).join("")}</div>` : "";
+  const mixHtml = mix.length ? `<div class="section-title"><span>06</span><h2>结构贡献</h2></div><div class="card"><div class="bar-list">${mix.map(m=>`<div class="bar-item"><span>${escText(m.name)}</span><div class="bar-track"><div class="bar-fill" style="width:${Math.max(3,m.share || 0)}%"></div></div><strong>${m.share}%</strong></div>`).join("")}</div></div>` : "";
+  const exceptionHtml = exceptions.length ? `<div class="section-title"><span>07</span><h2>异常与风险明细</h2></div><div class="card"><table class="data-table"><thead><tr><th>主体</th><th>期间</th><th>触发原因</th><th>营收</th><th>净利润</th><th>负债率</th></tr></thead><tbody>${exceptions.map(x=>`<tr><td>${escText(x.entity)}</td><td>${escText(x.period)}</td><td>${escText(x.reason)}</td><td>${money(x.revenue)}</td><td>${money(x.profit)}</td><td>${pct(x.debt)}</td></tr>`).join("")}</tbody></table></div>` : "";
+  $("domainSection").innerHTML = trendHtml + entityHtml + mixHtml + exceptionHtml;
+}
+function renderAnalysisSections(){
+  const sections = data.analysis_sections || [];
+  const html = sections.map((section, idx) => {
+    const number = String(idx + 4).padStart(2, "0");
+    const title = `<div class="section-title"><span>${number}</span><h2>${escText(section.title)}</h2></div>`;
+    if(section.kind === "bars"){
+      const rows = section.rows || [];
+      const maxValue = Math.max(...rows.map(r => Math.abs(Number(r.value) || 0)), 1);
+      return title + `<div class="card"><div class="bar-list">${rows.map(r => `<div class="bar-item"><span>${escText(r.name)}</span><div class="bar-track"><div class="bar-fill" style="width:${Math.max(3, Math.abs(Number(r.value) || 0) / maxValue * 100)}%"></div></div><strong>${r.share !== undefined && r.share !== 0 ? escText(r.share) + "%" : compactNumber(r.value)}</strong><small>${escText(r.detail || "")}</small></div>`).join("")}</div></div>`;
+    }
+    if(section.kind === "cards"){
+      const rows = section.rows || [];
+      return title + `<div class="cat-grid">${rows.map(r => `<article class="cat-card" style="--health:${toneMap[r.tone] || "var(--accent)"}"><div class="cat-head"><div class="cat-name">${escText(r.title || r.name)}</div><div class="badge">${escText(r.badge || "")}</div></div><div class="cat-rate">${escText(r.value ?? "")}</div><div class="owner-line">${escText(r.detail || r.sub || "")}</div></article>`).join("")}</div>`;
+    }
+    if(section.kind === "table"){
+      const cols = section.columns || [];
+      const rows = section.rows || [];
+      return title + `<div class="card"><table class="data-table"><thead><tr>${cols.map(c => `<th>${escText(c.label || c.key)}</th>`).join("")}</tr></thead><tbody>${rows.map(row => `<tr>${cols.map(c => `<td>${escText(row[c.key])}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+    }
+    return "";
+  }).join("");
+  $("domainSection").innerHTML = html;
+}
+function renderGeneric(){
+  const cats = data.category_columns || [];
+  const nums = data.numeric_columns || [];
+  const trend = data.trend_series || [];
+  const mix = data.category_mix || [];
+  const outliers = data.outliers || [];
+  const maxTrend = Math.max(...trend.map(x=>Math.abs(x.value || 0)), 1);
+  const trendHtml = trend.length ? `<div class="section-title"><span>04</span><h2>趋势变化</h2></div><div class="card"><div class="bar-list">${trend.map(d=>`<div class="bar-item"><span>${escText(d.period)}</span><div class="bar-track"><div class="bar-fill" style="width:${Math.max(3,Math.abs(d.value || 0)/maxTrend*100)}%"></div></div><strong>${compactNumber(d.value)}</strong></div>`).join("")}</div></div>` : "";
+  const mixHtml = mix.length ? `<div class="section-title"><span>05</span><h2>结构贡献</h2></div><div class="cat-grid">${mix.map(c=>`<article class="cat-card" style="--health:var(--accent)"><div class="cat-head"><div class="cat-name">${escText(c.name)}</div><div class="badge">${escText(c.metric || "指标")} · ${c.share}%</div></div><div class="cat-rate">${compactNumber(c.amount)}</div><div class="bar-track"><div class="bar-fill" style="width:${Math.max(3,c.share || 0)}%;background:var(--accent)"></div></div><div class="owner-line">记录数：${c.records}</div></article>`).join("")}</div>` : "";
+  const catHtml = (!mix.length && cats.length) ? `<div class="section-title"><span>05</span><h2>主要分类分布</h2></div><div class="metric-grid">${cats.map(c=>`<article class="metric-card"><h3>${escText(c.name)}</h3><div class="top-values">${(c.top_values || []).slice(0,6).map(v=>`<div class="top-row"><span>${escText(v.value)}</span><strong>${v.count}</strong></div>`).join("")}</div></article>`).join("")}</div>` : "";
+  const numHtml = nums.length ? `<div class="section-title"><span>06</span><h2>数值字段概览</h2></div><div class="metric-grid">${nums.map(n=>`<article class="metric-card"><h3>${escText(n.name)}</h3><div class="mini-grid"><div class="mini"><b>${compactNumber(n.numeric.sum)}</b><span>总计</span></div><div class="mini"><b>${compactNumber(n.numeric.mean)}</b><span>均值</span></div><div class="mini"><b>${compactNumber(n.numeric.max)}</b><span>最大</span></div><div class="mini"><b>${compactNumber(n.numeric.min)}</b><span>最小</span></div></div></article>`).join("")}</div>` : "";
+  const outlierHtml = outliers.length ? `<div class="section-title"><span>07</span><h2>异常高值</h2></div><div class="card"><table class="data-table"><thead><tr><th>字段</th><th>对象</th><th>数值</th><th>基准中位数</th></tr></thead><tbody>${outliers.map(x=>`<tr><td>${escText(x.field)}</td><td>${escText(x.label)}</td><td>${compactNumber(x.value)}</td><td>${compactNumber(x.baseline)}</td></tr>`).join("")}</tbody></table></div>` : "";
+  $("domainSection").innerHTML = trendHtml + mixHtml + catHtml + numHtml + outlierHtml;
+}
+function animateBg(){
+  const canvas = $("bgCanvas");
+  const ctx = canvas.getContext("2d");
+  let points = [];
+  function resize(){canvas.width=innerWidth;canvas.height=innerHeight;points=Array.from({length:46},()=>({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,r:Math.random()*2+0.4}))}
+  function step(){ctx.clearRect(0,0,canvas.width,canvas.height);ctx.fillStyle="rgba(56,189,248,.18)";for(const p of points){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>canvas.width)p.vx*=-1;if(p.y<0||p.y>canvas.height)p.vy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill()}requestAnimationFrame(step)}
+  resize();addEventListener("resize",resize);step();
+}
+renderBasics();
+if(data.domain === "devops-demand-pool") renderDevops();
+else if(data.domain === "ecommerce-orders") renderEcommerce();
+else if(data.domain === "finance-expense") renderFinance();
+else if(data.analysis_sections) renderAnalysisSections();
+else renderGeneric();
+animateBg();
+
+  </script>
+</body>
+</html>

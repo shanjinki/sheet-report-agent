@@ -1,0 +1,29 @@
+{
+  "name": "excel-to-html-slides",
+  "version": "0.1.0",
+  "description": "Turn spreadsheets into polished single-file HTML business briefings.",
+  "author": {
+    "name": "shanjinki",
+    "email": "shanjinno1@gmail.com",
+    "url": "https://github.com/shanjinki"
+  },
+  "homepage": "https://github.com/shanjinki/excel-to-html-slides",
+  "repository": "https://github.com/shanjinki/excel-to-html-slides",
+  "license": "MIT",
+  "keywords": ["spreadsheets", "excel", "html", "reports", "business-analysis"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Excel to HTML Slides",
+    "shortDescription": "Turn Excel exports into HTML briefings.",
+    "longDescription": "excel-to-html-slides profiles business spreadsheets and generates management-ready HTML briefings with domain analyzers, visual systems, KPI cards, insights, risks, and recommendations.",
+    "developerName": "shanjinki",
+    "category": "Productivity",
+    "capabilities": ["Write", "Analyze"],
+    "defaultPrompt": [
+      "Turn this Excel export into an HTML business briefing.",
+      "Analyze this CSV and generate a management-ready HTML report.",
+      "Create a demand-pool health briefing from this spreadsheet."
+    ],
+    "brandColor": "#38BDF8"
+  }
+}

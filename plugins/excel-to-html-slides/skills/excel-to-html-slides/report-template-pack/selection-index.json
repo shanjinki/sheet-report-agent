@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "pack_name": "excel-to-html-slides Template Pack",
+  "template_count": 18,
+  "usage": {
+    "selection": "Read this compact index first to shortlist report templates from metadata.",
+    "previews": "Read only the preview_md files for the shortlisted candidates.",
+    "final_generation": "Use the selected template's modules, visual language, and decision focus when generating or refining the final HTML report.",
+    "never": "Do not force a template if the user's request demands a custom report. Use the closest template as a starting point and adapt."
+  },
+  "templates": [
+    {
+      "slug": "executive-command-center",
+      "name": "Executive Command Center",
+      "tagline": "Dark executive control-room report for risk, backlog, delivery, and operational status.",
+      "domains": ["operations", "devops", "project", "support", "risk"],
+      "style": "command-center",
+      "density": "medium-high",
+      "best_for": "Leadership alignment, demand pools, incident/risk reviews, operational health checks.",
+      "avoid_for": "Warm customer-story reports or print-heavy finance memos.",
+      "preview_md": "report-template-pack/templates/executive-command-center/preview.md"
+    },
+    {
+      "slug": "boardroom-kpi-brief",
+      "name": "Boardroom KPI Brief",
+      "tagline": "Clean light report for concise management summaries and cross-department reviews.",
+      "domains": ["finance", "crm", "operations", "generic"],
+      "style": "boardroom-light",
+      "density": "medium",
+      "best_for": "Monthly business reviews, executive memos, department syncs, budget and performance summaries.",
+      "avoid_for": "Highly visual ecommerce/customer reports that need more energy.",
+      "preview_md": "report-template-pack/templates/boardroom-kpi-brief/preview.md"
+    },
+    {
+      "slug": "retail-growth-pulse",
+      "name": "Retail Growth Pulse",
+      "tagline": "Commercial growth report for orders, GMV, refunds, products, channels, and regions.",
+      "domains": ["ecommerce-orders", "retail", "sales"],
+      "style": "retail-pulse",
+      "density": "medium",
+      "best_for": "Ecommerce operation reviews, campaign reviews, shop/platform sales reports.",
+      "avoid_for": "Strict compliance reports or technical backlog reports.",
+      "preview_md": "report-template-pack/templates/retail-growth-pulse/preview.md"
+    },
+    {
+      "slug": "review-sentiment-board",
+      "name": "Review Sentiment Board",
+      "tagline": "Customer feedback report focused on ratings, negative drivers, excerpts, and improvement actions.",
+      "domains": ["ecommerce-reviews", "customer-feedback", "support"],
+      "style": "retail-pulse",
+      "density": "medium",
+      "best_for": "Product reviews, store reviews, satisfaction feedback, complaint analysis.",
+      "avoid_for": "Tables without text, rating, or issue fields.",
+      "preview_md": "report-template-pack/templates/review-sentiment-board/preview.md"
+    },
+    {
+      "slug": "crm-pipeline-radar",
+      "name": "CRM Pipeline Radar",
+      "tagline": "Pipeline report for funnel leakage, stale opportunities, owners, and forecast risk.",
+      "domains": ["crm", "sales", "pipeline"],
+      "style": "boardroom-light",
+      "density": "medium-high",
+      "best_for": "CRM lead/opportunity exports, sales pipeline reviews, forecast meetings.",
+      "avoid_for": "Post-sale order or support-ticket datasets.",
+      "preview_md": "report-template-pack/templates/crm-pipeline-radar/preview.md"
+    },
+    {
+      "slug": "inventory-risk-ledger",
+      "name": "Inventory Risk Ledger",
+      "tagline": "Operational report for stockout, overstock, warehouse, supplier, and movement risks.",
+      "domains": ["erp-inventory", "procurement", "warehouse", "supply-chain"],
+      "style": "ops-ledger",
+      "density": "high",
+      "best_for": "Inventory snapshots, procurement exports, warehouse movement reports.",
+      "avoid_for": "Customer sentiment or creative market research.",
+      "preview_md": "report-template-pack/templates/inventory-risk-ledger/preview.md"
+    },
+    {
+      "slug": "expense-variance-memo",
+      "name": "Expense Variance Memo",
+      "tagline": "Finance report for budget vs actual, expense mix, overdue payments, and exceptions.",
+      "domains": ["finance", "expense", "budget", "reconciliation"],
+      "style": "boardroom-light",
+      "density": "high",
+      "best_for": "Expense reports, budget trackers, payment/reconciliation sheets.",
+      "avoid_for": "Customer-facing reports where finance precision is not central.",
+      "preview_md": "report-template-pack/templates/expense-variance-memo/preview.md"
+    },
+    {
+      "slug": "hr-operations-brief",
+      "name": "HR Operations Brief",
+      "tagline": "People operations report for attendance, headcount, performance, and exception follow-up.",
+      "domains": ["hr", "attendance", "performance"],
+      "style": "editorial-brief",
+      "density": "medium",
+      "best_for": "HR monthly reviews, attendance checks, performance distribution summaries.",
+      "avoid_for": "Pure revenue, order, or inventory reports.",
+      "preview_md": "report-template-pack/templates/hr-operations-brief/preview.md"
+    },
+    {
+      "slug": "support-sla-control",
+      "name": "Support SLA Control",
+      "tagline": "Service report for tickets, response time, aging, SLA breaches, and root causes.",
+      "domains": ["support", "service", "tickets", "customer-care"],
+      "style": "command-center",
+      "density": "medium-high",
+      "best_for": "Customer service tickets, work orders, case exports, complaint handling.",
+      "avoid_for": "Datasets without status, owner, time, or issue type fields.",
+      "preview_md": "report-template-pack/templates/support-sla-control/preview.md"
+    },
+    {
+      "slug": "survey-insight-editorial",
+      "name": "Survey Insight Editorial",
+      "tagline": "Editorial report for survey distributions, segments, quotes, and insight-led recommendations.",
+      "domains": ["survey", "offline-collection", "research", "feedback"],
+      "style": "editorial-brief",
+      "density": "medium",
+      "best_for": "Questionnaire exports, offline research forms, qualitative + quantitative feedback.",
+      "avoid_for": "Dense operational exception reports.",
+      "preview_md": "report-template-pack/templates/survey-insight-editorial/preview.md"
+    },
+    {
+      "slug": "generic-data-studio",
+      "name": "Generic Data Studio",
+      "tagline": "Exploratory profile report for unknown or mixed-schema tables.",
+      "domains": ["generic", "unknown", "mixed"],
+      "style": "data-studio",
+      "density": "medium",
+      "best_for": "Any table where the business domain is unclear or the user asks for exploratory analysis.",
+      "avoid_for": "Final executive reports when a stronger domain-specific template clearly fits.",
+      "preview_md": "report-template-pack/templates/generic-data-studio/preview.md"
+    },
+    {
+      "slug": "compliance-exception-register",
+      "name": "Compliance Exception Register",
+      "tagline": "Exception-first report for audit, compliance, missing data, overdue items, and approval gaps.",
+      "domains": ["compliance", "audit", "finance", "operations", "quality"],
+      "style": "boardroom-light",
+      "density": "high",
+      "best_for": "Tables where the core question is what is abnormal, overdue, missing, or non-compliant.",
+      "avoid_for": "Positive growth storytelling reports.",
+      "preview_md": "report-template-pack/templates/compliance-exception-register/preview.md"
+    },
+    {
+      "slug": "project-delivery-map",
+      "name": "Project Delivery Map",
+      "tagline": "Project portfolio report for status, milestones, owner load, delay risk, and next actions.",
+      "domains": ["project", "portfolio", "tasks", "devops"],
+      "style": "command-center",
+      "density": "medium-high",
+      "best_for": "Project trackers, milestone sheets, task exports, PMO reports.",
+      "avoid_for": "Retail order analysis or qualitative survey synthesis.",
+      "preview_md": "report-template-pack/templates/project-delivery-map/preview.md"
+    },
+    {
+      "slug": "channel-mix-review",
+      "name": "Channel Mix Review",
+      "tagline": "Channel/region/category contribution report for sales, traffic, leads, or order tables.",
+      "domains": ["sales", "marketing", "ecommerce-orders", "crm"],
+      "style": "retail-pulse",
+      "density": "medium",
+      "best_for": "Tables with channel, region, source, shop, platform, or category fields.",
+      "avoid_for": "Datasets without a contribution metric such as amount, count, leads, or orders.",
+      "preview_md": "report-template-pack/templates/channel-mix-review/preview.md"
+    },
+    {
+      "slug": "product-performance-matrix",
+      "name": "Product Performance Matrix",
+      "tagline": "Product/SKU report for revenue, volume, refund, rating, inventory, or margin tradeoffs.",
+      "domains": ["product", "sku", "ecommerce-orders", "reviews", "inventory"],
+      "style": "retail-pulse",
+      "density": "high",
+      "best_for": "Product catalogs, SKU orders, review/product issue tables, item performance exports.",
+      "avoid_for": "Tables with no product or item dimension.",
+      "preview_md": "report-template-pack/templates/product-performance-matrix/preview.md"
+    },
+    {
+      "slug": "finance-reconciliation-room",
+      "name": "Finance Reconciliation Room",
+      "tagline": "Dark analytical finance report for reconciliation mismatches, unpaid items, and aging.",
+      "domains": ["finance", "reconciliation", "payments", "invoices"],
+      "style": "command-center",
+      "density": "high",
+      "best_for": "Finance operations sheets where exceptions and aging are more important than presentation softness.",
+      "avoid_for": "Broad business reviews where finance is only one minor section.",
+      "preview_md": "report-template-pack/templates/finance-reconciliation-room/preview.md"
+    },
+    {
+      "slug": "procurement-supplier-watch",
+      "name": "Procurement Supplier Watch",
+      "tagline": "Supplier report for purchase amounts, delivery risk, concentration, and exception follow-up.",
+      "domains": ["procurement", "supplier", "erp", "supply-chain"],
+      "style": "ops-ledger",
+      "density": "high",
+      "best_for": "Purchase order exports, supplier scorecards, delivery and cost tracking sheets.",
+      "avoid_for": "Consumer review or sales-funnel reports.",
+      "preview_md": "report-template-pack/templates/procurement-supplier-watch/preview.md"
+    },
+    {
+      "slug": "store-operations-scoreboard",
+      "name": "Store Operations Scoreboard",
+      "tagline": "Store/branch report for operational KPIs, rankings, exceptions, and coaching actions.",
+      "domains": ["retail", "stores", "operations", "service"],
+      "style": "retail-pulse",
+      "density": "medium-high",
+      "best_for": "Store performance, branch operations, regional service or sales comparisons.",
+      "avoid_for": "Head-office-only finance reconciliation.",
+      "preview_md": "report-template-pack/templates/store-operations-scoreboard/preview.md"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "excel-to-html-slides",
+  "version": "0.1.0",
+  "description": "Turn spreadsheets into polished single-file HTML business briefings.",
+  "skills": "./skills/",
+  "author": {
+    "name": "shanjinki",
+    "email": "shanjinno1@gmail.com",
+    "url": "https://github.com/shanjinki"
+  },
+  "homepage": "https://github.com/shanjinki/excel-to-html-slides",
+  "repository": "https://github.com/shanjinki/excel-to-html-slides",
+  "license": "MIT",
+  "keywords": ["spreadsheets", "excel", "html", "reports", "business-analysis"]
+}
